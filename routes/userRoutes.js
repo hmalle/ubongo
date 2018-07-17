@@ -3,6 +3,10 @@ const db = require("../models");
 const passport = require("../config/passport");
 
 module.exports = (app) => {
+  app.get("/", (req, res) =>{
+    res.send("../client/public/index.html");
+  });
+
   app.post("/api/signin", passport.authenticate("local"), (req,res)=>{
     res.json({
       "username": req.user.username,
