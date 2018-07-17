@@ -14,6 +14,7 @@
     "dialect": "mysql"
   },
   "production": {
-    "host": "mysql://ggvge9jzv0351bui:[email protected]zonaws.com:3306/wdr05sx6t5k98w5c"
+    "host": "JAWSDB_MARIA_URL",
+    "dialect" : "mysql"
   }
 }
