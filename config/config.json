@@ -14,6 +14,6 @@
     "dialect": "mysql"
   },
   "production": {
-    "use_env_variable":"mysql://ggvge9jzv0351bui:[email protected]zonaws.com:3306/wdr05sx6t5k98w5c"
+    "use_env_variable":"JAWSDB_MARIA_URL"
   }
 }
