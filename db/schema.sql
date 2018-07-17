@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS braaaaainsDB;
-CREATE DATABASE braaaaainsDB;
+DROP DATABASE IF EXISTS ubongoDB;
+CREATE DATABASE ubongoDB;
 
-USE braaaaainsDB;
+USE ubongoDB;
 
 CREATE TABLE Users(
   username VARCHAR(30) NOT NULL,
