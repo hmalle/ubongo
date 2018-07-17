@@ -31,8 +31,7 @@ export default class Signin extends Component{
     event.preventDefault();
     if(this.inputValidation()){
       axios({
-        method:"post",
-        url:"http://127.0.0.1:3001/api/signin",
+        method:"post", url:"/api/signin",
         data:{
           username:this.state.username.trim(),
           password:this.state.password.trim()
