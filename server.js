@@ -27,10 +27,6 @@ app.use(bodyparser.json({type:"application/vnd.api+json"}));
 //To be able to server static images instead of storing images in the backend
 app.use(express.static("./images/"));
 
-if(process.env.NODE_ENV === "production"){
-  app.use(express.static("client/build"));
-}
-
 //use morgan for log
 app.use(morgan("dev"));
 
