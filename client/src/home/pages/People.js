@@ -38,7 +38,7 @@ export default class People  extends Component{
     }
     axios({
       method:"post",
-      url:"http://127.0.0.1:3001/api/save/session",
+      url:"/api/save/session",
       data:{
         username:this.props.username,
         field   :"people",
@@ -58,7 +58,7 @@ export default class People  extends Component{
   restoreSession(){
     axios({
       method:"post",
-      url:"http://127.0.0.1:3001/api/retrieve/session",
+      url:"/api/retrieve/session",
       data:{
         username:this.props.username,
         field   :"people",

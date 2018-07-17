@@ -19,7 +19,7 @@ export default class Words  extends Component{
     }
     axios({
       method:"post",
-      url:"http://127.0.0.1:3001/api/save/session",
+      url:"/api/save/session",
       data:{
         username:this.props.username,
         field   :"words",

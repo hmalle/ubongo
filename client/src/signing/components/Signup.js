@@ -35,7 +35,7 @@ export default class Signup extends Component{
     if(this.inputValidation()){
       axios({
         method:"post",
-        url:"http://127.0.0.1:3001/api/signup",
+        url:"/api/signup",
         data:{
           email   :this.state.email.trim(),
           username:this.state.username.trim(),
