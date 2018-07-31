@@ -31,7 +31,7 @@ export default class Signin extends Component{
     event.preventDefault();
     if(this.inputValidation()){
       axios({
-        method:"post", url:"/api/signin",
+        method:"post", url:"https://ubongo.herokuapp.com/api/signin",
         data:{
           username:this.state.username.trim(),
           password:this.state.password.trim()
