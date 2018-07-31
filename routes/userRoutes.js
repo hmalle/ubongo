@@ -5,7 +5,7 @@ const path = require("path");
 
 module.exports = (app) => {
   app.get("/", (req,res)=>{
-    res.sendFile(path.join(__dirname+"./client/build/index.html"));
+    res.sendFile(path.join(__dirname+"../client/public/index.html"));
   });
 
   app.post("/api/signin", passport.authenticate("local"), (req,res)=>{
