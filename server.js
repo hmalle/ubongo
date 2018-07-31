@@ -6,7 +6,6 @@ const express     = require("express");
 const morgan      = require("morgan");
 const passport    = require("passport");
 const session     = require("express-session");
-const path        = require("path");
 
 const PORT = process.env.PORT || 3001 ;
 const app = express();
@@ -28,7 +27,9 @@ app.use(bodyparser.json({type:"application/vnd.api+json"}));
 //To be able to server static images instead of storing images in the backend
 app.use(express.static("./images/"));
 
-app.use(express.static(path.join(__dirname,"client/build")));
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static("client/build"));
+}
 
 //use morgan for log
 app.use(morgan("dev"));
