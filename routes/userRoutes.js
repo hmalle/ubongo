@@ -4,6 +4,10 @@ const passport = require("../config/passport");
 const path = require("path");
 
 module.exports = (app) => {
+  app.get("/", (req,res)=>{
+    res.sendFile(path.join(__dirname+"./client/build/index.html"));
+  });
+
   app.post("/api/signin", passport.authenticate("local"), (req,res)=>{
     res.json({
       "username": req.user.username,
