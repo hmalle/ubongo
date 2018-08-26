@@ -1,6 +1,7 @@
 
 import React, { Component } from "react";
 import axios from "axios";
+import css from "./styles.js";
 
 export default class Signup extends Component{
   state={
@@ -119,51 +120,5 @@ export default class Signup extends Component{
       </div>
     );
   };
-}
-
-const css={ 
-  all:{
-    width: "100%",
-    marginTop: 50,
-  },
-  signForm:{
-    border: "2px solid black",
-    width:"50%",
-    margin: "auto",
-    borderRadius: 5,
-    padding: 20,
-    align: "center",
-  },
-  submitBtn:{
-    backgroundColor: "teal",
-    borderRadius:5,
-    fontSize: 30,
-    fontWeight: 800,
-    paddingTop: 10,
-    paddingBottom: 10,
-    marginLeft: 4,
-    marginRight: 4,
-    marginTop: 10,
-    width: "100%",
-    border:"2px solid black",
-  },
-  textarea:{
-    width: "100%",
-    margin: 3,
-    height: 50,
-    fontSize: 30,
-    border:"1px solid black",
-    borderRadius: 5,
-  },
-  signToggle: {
-    width: 10,
-    color: "blue",
-    padding: 1,
-    border: "1px solid 008b8b",
-  },
-  pSign:{
-    fontSize: 25,
-    textAlign: "center",
-  },
 }
 

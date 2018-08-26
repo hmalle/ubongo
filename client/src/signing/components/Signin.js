@@ -1,6 +1,7 @@
 
 import React, { Component } from "react";
 import axios from "axios";
+import css from "./styles.js";
 
 export default class Signin extends Component{
   state={
@@ -95,50 +96,4 @@ export default class Signin extends Component{
     );
   };
 };
-
-const css={ 
-  all:{
-    width: "100%",
-    marginTop: 50,
-  },
-  signForm:{
-    margin:"auto",
-    width: "50%",
-    border: "2px solid black",
-    borderRadius: 5,
-    padding: 20,
-    align: "center",
-  },
-  submitBtn:{
-    width: "100%",
-    borderRadius:5,
-    marginTop: 10,
-    paddingTop: 10,
-    paddingBottom: 10,
-    marginLeft: 4,
-    fontWeight: 800,
-    fontSize: 30,
-    backgroundColor: "teal",
-    marginRIght: 4,
-    border:"2px solid black",
-  },
-  textarea:{
-    width: "100%",
-    margin: 3,
-    height: 50,
-    border:"1px solid black",
-    borderRadius: 5,
-    fontSize: 30,
-  },
-  signToggle: {
-    width: 10,
-    color: "blue",
-    padding: 1,
-    border: "1px solid 008b8b",
-  },
-  pSign:{
-    fontSize: 25,
-    textAlign: "center",
-  },
-}
 
