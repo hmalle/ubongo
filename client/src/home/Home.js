@@ -1,6 +1,7 @@
 
 import React, { Component } from "react";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Init from "./pages/Init";
 import Cards from "./pages/Cards";
 import Images from "./pages/Images";
@@ -66,6 +67,9 @@ export default class App extends Component {
         </div>
         <div className="container-fluid" style={css.content}>
           {content} 
+        </div>
+        <div className="footer">
+          <Footer/>
         </div>
       </div>
     );

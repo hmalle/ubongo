@@ -1,6 +1,5 @@
 
 import React, { Component } from "react";
-//import axios from "axios";
 
 export default class math  extends Component{
   state={
@@ -100,7 +99,7 @@ export default class math  extends Component{
               value={this.state.answer}
             />
             <br/>
-            <input style={css.submitBtn} type="submit" value="Submit" />
+            <button style={css.submitBtn} type="submit">Submit</button>
           </form>
         </div>
       </div>
@@ -156,6 +155,8 @@ const css={
   },
   submitBtn:{
     borderRadius:3,
+    height: 40,
+    fontWight: 600,
     marginTop: 10,
     fontSize: 20,
     width: "100%",

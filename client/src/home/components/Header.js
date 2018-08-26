@@ -37,10 +37,10 @@ export default class Header  extends Component{
             </Navbar.Brand>
           </Navbar.Header>
           <Nav>
-            <NavDropdown style={css.dropdown} title="Math" id="basic-nav-dropdown">
-              <MenuItem style={css.menuitem}onClick={ ()=>{this.props.setPageIndex(3)} }>Math</MenuItem>
+            <NavDropdown style={css.dropdown} title="Math">
+              <MenuItem style={css.menuitem} onClick={ ()=>{this.props.setPageIndex(3)} }>Math</MenuItem>
             </NavDropdown>
-            <NavDropdown style={css.dropdown} title="Memory" id="basic-nav-dropdown">
+            <NavDropdown style={css.dropdown} title="Memory">
               <MenuItem style={css.menuitem} onClick={ ()=>{this.props.setPageIndex(1)} }>Cards</MenuItem>
               <MenuItem style={css.menuitem} onClick={ ()=>{this.props.setPageIndex(2)} }>Images</MenuItem>
               <MenuItem style={css.menuitem} onClick={ ()=>{this.props.setPageIndex(4)} }>Numbers</MenuItem>
@@ -48,7 +48,7 @@ export default class Header  extends Component{
               <MenuItem style={css.menuitem} onClick={ ()=>{this.props.setPageIndex(6)} }>Poems</MenuItem>
               <MenuItem style={css.menuitem} onClick={ ()=>{this.props.setPageIndex(8)} }>Words</MenuItem>
             </NavDropdown>
-            <NavDropdown style={css.dropdown} title="Puzzles" id="basic-nav-dropdown">
+            <NavDropdown style={css.dropdown} title="Puzzles">
               <MenuItem style={css.menuitem} onClick={ ()=>{this.props.setPageIndex(7)} }>Puzzles</MenuItem>
             </NavDropdown>
           </Nav>
@@ -60,26 +60,26 @@ export default class Header  extends Component{
 
 const css={ 
   navbar:{
-
+    /* */
   },
   dropdown:{
     border:"1px solid black",
-    fontWeight:"600",
+    fontWeight:"500",
     marginLeft: 4,
-    fontSize: 25,
+    fontSize: 23,
     backgroundColor: "#007580",
-    borderRadius:5,
+    borderRadius: 5,
+    color:"#fff",
   },
   navheader:{
     float:"left",
     fontWeight:"600",
-    fontColor:"fff",
     fontSize: 23,
     marginLeft: 0,
     marginRight: 10,
   },
   menuitem:{
-    fontSize: 30,
+    fontSize: 20,
   }
 }
 
