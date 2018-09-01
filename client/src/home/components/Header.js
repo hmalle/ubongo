@@ -1,8 +1,5 @@
 
-import React, { Component } from "react";
-import {Navbar,NavDropdown,Nav,Button,MenuItem} from "react-bootstrap";
-
-export default class Header  extends Component{
+import React, { Component } from "react"; export default class Header  extends Component{
   state={
     mathMenu: false,
     memoryMenu   : false,
@@ -30,6 +27,43 @@ export default class Header  extends Component{
   render(){
     return(
       <div>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light" style={css.navbar}>
+        <a className="navbar-brand" href="#" style={css.brand}>Ubongo</a>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item active">
+              <button 
+                className="nav-link" 
+                style={css.navheader}
+                onClick={()=>{this.props.setPageIndex(0)}}
+              >Home</button>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">Link</a>
+            </li>
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a className="dropdown-item" href="#">Action</a>
+                <a className="dropdown-item" href="#">Another action</a>
+                <div className="dropdown-divider"></div>
+                <a className="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link disabled" href="#">Disabled</a>
+            </li>
+          </ul>
+        </div>
+        </nav>
+      </div>
+      /*
         <Navbar fluid style={css.navbar}>
           <Navbar.Header style={css.navheader}>
             <Navbar.Brand>
@@ -54,32 +88,14 @@ export default class Header  extends Component{
           </Nav>
         </Navbar>
       </div>
+      */
     );
   };
 }
 
 const css={ 
   navbar:{
-    /* */
-  },
-  dropdown:{
-    border:"1px solid black",
-    fontWeight:"500",
-    marginLeft: 4,
-    fontSize: 23,
-    backgroundColor: "#007580",
-    borderRadius: 5,
-    color:"#fff",
-  },
-  navheader:{
-    float:"left",
-    fontWeight:"600",
-    fontSize: 23,
-    marginLeft: 0,
-    marginRight: 10,
-  },
-  menuitem:{
     fontSize: 20,
-  }
+  },
 }
 

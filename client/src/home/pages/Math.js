@@ -65,8 +65,8 @@ export default class math  extends Component{
  
   handleSubmit = event => {
     event.preventDefault();
-    if(this.state.ans == parseFloat(this.state.answer)){ //TODO === doesnt give correct analysis
-      this.setState({score: this.state.score++});
+    if(parseFloat(this.state.ans)===parseFloat(this.state.answer)){ 
+      this.setState({score: this.state.score+=1});
     }
     let tt = this.state.total + 1;
     this.setState({
@@ -109,7 +109,7 @@ export default class math  extends Component{
       <div style={css.all}>
         <div style={css.container}>
           <h3 style={css.math}>Math</h3>
-          <div>
+          <div style={css.startstopbtn}>
             <button style={css.btncss} onClick={()=>{this.start()}} >Start</button>
             <button style={css.btncss} onClick={()=>{this.stop()}} >Stop</button>
           </div>
@@ -119,17 +119,35 @@ export default class math  extends Component{
     )
   };
 }
+
 const css={ 
   all:{
     width:"100%",
   },
   container:{
-    width: "50%",
+    width: "80%",
+    border: "1px solid black",
+    borderRadius: 5,
+    height: 300,
     margin: "auto",
     align: "center",
   },
   math:{
     fontSize: 30,
+    fontWeight: 600,
+    textAlign: "center",
+  },
+  startstopbtn:{
+    textAlign: "center",
+  },
+  btncss:{
+    border:"1px solid black",
+    fontWeight:"600",
+    width: 150,
+    marginLeft: 4,
+    fontSize: 20,
+    backgroundColor: "#007580",
+    borderRadius:5,
   },
   form:{
     width: "100%",
@@ -163,14 +181,6 @@ const css={
     backgroundColor: "teal",
     marginRight: 4,
     align:"center",
-  },
-  btncss:{
-    border:"1px solid black",
-    fontWeight:"600",
-    marginLeft: 4,
-    fontSize: 20,
-    backgroundColor: "#007580",
-    borderRadius:5,
   },
 }
 
