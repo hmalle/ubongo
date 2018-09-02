@@ -24,6 +24,10 @@ import React, { Component } from "react"; export default class Header  extends C
     });
   }
 
+  triggerSignOut(){
+    this.props.signMeOut();
+  }
+
   render(){
     return(
       <div>
@@ -45,93 +49,102 @@ import React, { Component } from "react"; export default class Header  extends C
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item dropdown">
-                <button className="nav-link dropdown-toggle" 
-                  id="navbarDropdown1" 
-                  style={css.dropdownbtn}
-                  data-toggle="dropdown" 
-                  aria-haspopup="true" 
-                  aria-expanded="false">
-                  Math
-                </button>
-                <div className="dropdown-menu" aria-labelledby="navbarDropdown1">
-                  <a 
-                    style={css.menuitem} 
-                    onClick={()=>{this.props.setPageIndex(11)}}>
+            <div className="float-left">
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item dropdown">
+                  <button className="nav-link dropdown-toggle" 
+                    id="navbarDropdown1" 
+                    style={css.dropdownbtn}
+                    data-toggle="dropdown" 
+                    aria-haspopup="true" 
+                    aria-expanded="false">
                     Math
-                  </a>
-                </div>
-              </li>
-              <li className="nav-item dropdown">
-                <button 
-                  className="nav-link dropdown-toggle" 
-                  id="navbarDropdown2" 
-                  style={css.dropdownbtn}
-                  data-toggle="dropdown" 
-                  aria-haspopup="true" 
-                  aria-expanded="false">
-                  Memory
-                </button>
-                <div className="dropdown-menu" aria-labelledby="navbarDropdown2">
-                  <a 
-                    className="dropdown-item" 
-                    style={css.menuitem} 
-                    onClick={()=>{this.props.setPageIndex(21)}}>
-                    Cards
-                  </a>
-                  <a 
-                    className="dropdown-item" 
-                    style={css.menuitem} 
-                    onClick={()=>{this.props.setPageIndex(22)}}>
-                    Images
-                  </a>
-                  <a 
-                    className="dropdown-item" 
-                    style={css.menuitem} 
-                    onClick={()=>{this.props.setPageIndex(23)}}>
-                    Numbers
-                  </a>
-                  <a 
-                    className="dropdown-item" 
-                    style={css.menuitem} 
-                    onClick={()=>{this.props.setPageIndex(24)}}>
-                    People
-                  </a>
-                  <a 
-                    className="dropdown-item" 
-                    style={css.menuitem} 
-                    onClick={()=>{this.props.setPageIndex(25)}}>
-                    Poems
-                  </a>
-                  <a 
-                    className="dropdown-item" 
-                    style={css.menuitem} 
-                    onClick={()=>{this.props.setPageIndex(26)}}>
-                    Words
-                  </a>
-                </div>
-              </li>
-              <li className="nav-item dropdown">
-                <button 
-                  className="nav-link dropdown-toggle" 
-                  id="navbarDropdown3" 
-                  style={css.dropdownbtn}
-                  data-toggle="dropdown" 
-                  aria-haspopup="true" 
-                  aria-expanded="false">
-                  Puzzles
-                </button>
-                <div className="dropdown-menu" aria-labelledby="navbarDropdown3">
-                  <a 
-                    className="dropdown-item" 
-                    style={css.menuitem} 
-                    onClick={()=>{this.props.setPageIndex(31)}}>
+                  </button>
+                  <div className="dropdown-menu" aria-labelledby="navbarDropdown1">
+                    <a 
+                      style={css.menuitem} 
+                      onClick={()=>{this.props.setPageIndex(11)}}>
+                      Math
+                    </a>
+                  </div>
+                </li>
+                <li className="nav-item dropdown">
+                  <button 
+                    className="nav-link dropdown-toggle" 
+                    id="navbarDropdown2" 
+                    style={css.dropdownbtn}
+                    data-toggle="dropdown" 
+                    aria-haspopup="true" 
+                    aria-expanded="false">
+                    Memory
+                  </button>
+                  <div className="dropdown-menu" aria-labelledby="navbarDropdown2">
+                    <a 
+                      className="dropdown-item" 
+                      style={css.menuitem} 
+                      onClick={()=>{this.props.setPageIndex(21)}}>
+                      Cards
+                    </a>
+                    <a 
+                      className="dropdown-item" 
+                      style={css.menuitem} 
+                      onClick={()=>{this.props.setPageIndex(22)}}>
+                      Images
+                    </a>
+                    <a 
+                      className="dropdown-item" 
+                      style={css.menuitem} 
+                      onClick={()=>{this.props.setPageIndex(23)}}>
+                      Numbers
+                    </a>
+                    <a 
+                      className="dropdown-item" 
+                      style={css.menuitem} 
+                      onClick={()=>{this.props.setPageIndex(24)}}>
+                      People
+                    </a>
+                    <a 
+                      className="dropdown-item" 
+                      style={css.menuitem} 
+                      onClick={()=>{this.props.setPageIndex(25)}}>
+                      Poems
+                    </a>
+                    <a 
+                      className="dropdown-item" 
+                      style={css.menuitem} 
+                      onClick={()=>{this.props.setPageIndex(26)}}>
+                      Words
+                    </a>
+                  </div>
+                </li>
+                <li className="nav-item dropdown">
+                  <button 
+                    className="nav-link dropdown-toggle" 
+                    id="navbarDropdown3" 
+                    style={css.dropdownbtn}
+                    data-toggle="dropdown" 
+                    aria-haspopup="true" 
+                    aria-expanded="false">
                     Puzzles
-                  </a>
-                </div>
-              </li>
-            </ul>
+                  </button>
+                  <div className="dropdown-menu" aria-labelledby="navbarDropdown3">
+                    <a 
+                      className="dropdown-item" 
+                      style={css.menuitem} 
+                      onClick={()=>{this.props.setPageIndex(31)}}>
+                      Puzzles
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div className="float-right">
+              <button
+                style={css.menuitem} 
+                onClick={()=>{this.props.triggerSignOut()}}>
+                Logout
+              </button>
+            </div>
           </div>
         </nav>
       </div>
@@ -151,6 +164,7 @@ const css={
   menuitem:{
     fontSize: 18,
     color: "#0c0c0c",
+    textAlign: "center",
   },
   dropdownbtn:{
     borderRadius: 5,

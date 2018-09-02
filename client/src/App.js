@@ -18,7 +18,7 @@ export default class App extends Component {
     });
   }
 
-  signMeOut(){
+  signOut(){
     this.setState({
       signedIn: false,
       username: "",
@@ -29,7 +29,7 @@ export default class App extends Component {
   render() {
     const content=this.state.signedIn ? (
       <Home 
-        signMeOut={this.signMeOut.bind(this)}
+        signOut={this.signOut.bind(this)}
         username={this.state.username}
       />
     ) : (

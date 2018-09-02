@@ -24,6 +24,10 @@ export default class App extends Component {
     });
   }
 
+  triggerSignOut(){
+    this.props.signOut();
+  }
+
   //Chooses which page to render
   renderPage(){
     switch(this.state.pageIndex){
@@ -54,16 +58,8 @@ export default class App extends Component {
     const content = this.renderPage();
     return (
       <div>
-        <div className="container-fluid" style={css.welcomesign}>
-          <div style={css.welcome}>
-            Welcome <strong> {this.props.username} </strong>
-          </div>
-          <div style={css.signout}>
-            <button style={css.signbtn} onClick={ ()=>{this.props.signMeOut()} }>Signout</button>
-          </div>
-        </div>
         <div className="container-fluid" style={css.header}>
-          <Header setPageIndex={this.setPageIndex.bind(this)}/>
+          <Header setPageIndex={this.setPageIndex.bind(this)} triggerSignOut={this.triggerSignOut.bind(this)}/>
         </div>
         <div className="container-fluid" style={css.content}>
           {content} 
@@ -77,22 +73,11 @@ export default class App extends Component {
 }
 
 const css={ 
-  welcomesign:{
-    marginTop:5,
-    marginBottom: 5,
-  },
-  welcome:{
-    float:"left",
-    fontSize: 30,
-  },
   header:{
     marginTop: 2,
   },
   content:{
     marginTop:2,
-  },
-  signout:{
-    float:"right",
   },
   signbtn:{
     backgroundColor: "#007580",
