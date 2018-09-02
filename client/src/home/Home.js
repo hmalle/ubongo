@@ -29,22 +29,22 @@ export default class App extends Component {
     switch(this.state.pageIndex){
       case 0:
         return (<Init username={this.props.username}/>);
-      case 1:
-        return (<Cards username={this.props.username}/>);
-      case 2: 
-        return (<Images username={this.props.username}/>);
-      case 3: 
+      case 11: 
         return (<Math username={this.props.username}/>);
-      case 4:
+      case 21:
+        return (<Cards username={this.props.username}/>);
+      case 22: 
+        return (<Images username={this.props.username}/>);
+      case 23:
         return (<Numbers username={this.props.username}/>);
-      case 5:
+      case 24:
         return (<People username={this.props.username}/>);
-      case 6:
+      case 25:
         return (<Poems username={this.props.username}/>);
-      case 7: 
-        return (<Puzzles username={this.props.username}/>);
-      case 8:
+      case 26: 
         return (<Words username={this.props.username}/>);
+      case 31:
+        return (<Puzzles username={this.props.username}/>);
       default:
         return (<Init username={this.props.username}/>);
     }
@@ -95,7 +95,7 @@ const css={
     float:"right",
   },
   signbtn:{
-    backgroundColor: "#7b887c",
+    backgroundColor: "#007580",
     border:"1px solid black",
     borderRadius:5,
     fontSize: 25,

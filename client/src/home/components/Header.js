@@ -2,8 +2,8 @@
 import React, { Component } from "react"; export default class Header  extends Component{
   state={
     mathMenu: false,
-    memoryMenu   : false,
-    puzzleMenu : false,
+    memoryMenu: false,
+    puzzleMenu: false,
   }
   
   toggleMathMenu(){
@@ -28,67 +28,113 @@ import React, { Component } from "react"; export default class Header  extends C
     return(
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light" style={css.navbar}>
-        <a className="navbar-brand" href="#" style={css.brand}>Ubongo</a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <button 
-                className="nav-link" 
-                style={css.navheader}
-                onClick={()=>{this.props.setPageIndex(0)}}
-              >Home</button>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">Link</a>
-            </li>
-            <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-              </a>
-              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a className="dropdown-item" href="#">Action</a>
-                <a className="dropdown-item" href="#">Another action</a>
-                <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link disabled" href="#">Disabled</a>
-            </li>
-          </ul>
-        </div>
+          <div 
+            className="navbar-brand" 
+            style={css.brand} 
+            onClick={()=>{this.props.setPageIndex(0)}}>
+            Ubongo
+          </div>
+          <button 
+            className="navbar-toggler" 
+            type="button" 
+            data-toggle="collapse" 
+            data-target="#navbarSupportedContent" 
+            aria-controls="navbarSupportedContent" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item dropdown">
+                <button className="nav-link dropdown-toggle" 
+                  id="navbarDropdown1" 
+                  style={css.dropdownbtn}
+                  data-toggle="dropdown" 
+                  aria-haspopup="true" 
+                  aria-expanded="false">
+                  Math
+                </button>
+                <div className="dropdown-menu" aria-labelledby="navbarDropdown1">
+                  <a 
+                    style={css.menuitem} 
+                    onClick={()=>{this.props.setPageIndex(11)}}>
+                    Math
+                  </a>
+                </div>
+              </li>
+              <li className="nav-item dropdown">
+                <button 
+                  className="nav-link dropdown-toggle" 
+                  id="navbarDropdown2" 
+                  style={css.dropdownbtn}
+                  data-toggle="dropdown" 
+                  aria-haspopup="true" 
+                  aria-expanded="false">
+                  Memory
+                </button>
+                <div className="dropdown-menu" aria-labelledby="navbarDropdown2">
+                  <a 
+                    className="dropdown-item" 
+                    style={css.menuitem} 
+                    onClick={()=>{this.props.setPageIndex(21)}}>
+                    Cards
+                  </a>
+                  <a 
+                    className="dropdown-item" 
+                    style={css.menuitem} 
+                    onClick={()=>{this.props.setPageIndex(22)}}>
+                    Images
+                  </a>
+                  <a 
+                    className="dropdown-item" 
+                    style={css.menuitem} 
+                    onClick={()=>{this.props.setPageIndex(23)}}>
+                    Numbers
+                  </a>
+                  <a 
+                    className="dropdown-item" 
+                    style={css.menuitem} 
+                    onClick={()=>{this.props.setPageIndex(24)}}>
+                    People
+                  </a>
+                  <a 
+                    className="dropdown-item" 
+                    style={css.menuitem} 
+                    onClick={()=>{this.props.setPageIndex(25)}}>
+                    Poems
+                  </a>
+                  <a 
+                    className="dropdown-item" 
+                    style={css.menuitem} 
+                    onClick={()=>{this.props.setPageIndex(26)}}>
+                    Words
+                  </a>
+                </div>
+              </li>
+              <li className="nav-item dropdown">
+                <button 
+                  className="nav-link dropdown-toggle" 
+                  id="navbarDropdown3" 
+                  style={css.dropdownbtn}
+                  data-toggle="dropdown" 
+                  aria-haspopup="true" 
+                  aria-expanded="false">
+                  Puzzles
+                </button>
+                <div className="dropdown-menu" aria-labelledby="navbarDropdown3">
+                  <a 
+                    className="dropdown-item" 
+                    style={css.menuitem} 
+                    onClick={()=>{this.props.setPageIndex(31)}}>
+                    Puzzles
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
         </nav>
       </div>
-      /*
-        <Navbar fluid style={css.navbar}>
-          <Navbar.Header style={css.navheader}>
-            <Navbar.Brand>
-              <Button style={css.dropdown} onClick={ ()=>{this.props.setPageIndex(0)} }>Home</Button>
-            </Navbar.Brand>
-          </Navbar.Header>
-          <Nav>
-            <NavDropdown style={css.dropdown} title="Math">
-              <MenuItem style={css.menuitem} onClick={ ()=>{this.props.setPageIndex(3)} }>Math</MenuItem>
-            </NavDropdown>
-            <NavDropdown style={css.dropdown} title="Memory">
-              <MenuItem style={css.menuitem} onClick={ ()=>{this.props.setPageIndex(1)} }>Cards</MenuItem>
-              <MenuItem style={css.menuitem} onClick={ ()=>{this.props.setPageIndex(2)} }>Images</MenuItem>
-              <MenuItem style={css.menuitem} onClick={ ()=>{this.props.setPageIndex(4)} }>Numbers</MenuItem>
-              <MenuItem style={css.menuitem} onClick={ ()=>{this.props.setPageIndex(5)} }>People</MenuItem>
-              <MenuItem style={css.menuitem} onClick={ ()=>{this.props.setPageIndex(6)} }>Poems</MenuItem>
-              <MenuItem style={css.menuitem} onClick={ ()=>{this.props.setPageIndex(8)} }>Words</MenuItem>
-            </NavDropdown>
-            <NavDropdown style={css.dropdown} title="Puzzles">
-              <MenuItem style={css.menuitem} onClick={ ()=>{this.props.setPageIndex(7)} }>Puzzles</MenuItem>
-            </NavDropdown>
-          </Nav>
-        </Navbar>
-      </div>
-      */
     );
   };
 }
@@ -96,6 +142,22 @@ import React, { Component } from "react"; export default class Header  extends C
 const css={ 
   navbar:{
     fontSize: 20,
+  },
+  brand:{
+    backgroundColor: "#7b887c",
+    fontSize: 25,
+    borderRadius: 4,
+  },
+  menuitem:{
+    fontSize: 18,
+    color: "#0c0c0c",
+  },
+  dropdownbtn:{
+    borderRadius: 5,
+    backgroundColor: "#7b887c",
+    border: "1px solid #0c0c0c",
+    marginLeft: 2,
+    marginRight: 2,
   },
 }
 
