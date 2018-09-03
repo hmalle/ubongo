@@ -5,7 +5,7 @@ export default{
     marginTop: 50,
   },
   signForm:{
-    border: "2px solid #003d3d",
+    border: "1px solid #8c9e8a",
     width:"45%",
     margin: "auto",
     borderRadius: 10,
@@ -13,7 +13,7 @@ export default{
     align: "center",
   },
   submitBtn:{
-    backgroundColor: "#19a3a3",
+    backgroundColor: "#8c9e8a",
     borderRadius:5,
     fontSize: 30,
     fontWeight: 800,
@@ -21,7 +21,7 @@ export default{
     marginRight: 4,
     marginTop: 10,
     width: "100%",
-    border:"2px solid black",
+    border:"1px solid #8c9e8a",
   },
   textarea:{
     width: "100%",

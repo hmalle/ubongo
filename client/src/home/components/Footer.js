@@ -4,7 +4,7 @@ import React, { Component } from "react";
 export default class Footer  extends Component{
   render(){
     return(
-      <div className="container-fluid" style={css.footer}>
+      <div className="footer" style={css.footer}>
         <p>&copy;Copyright 2018 Hillary Malle </p>
       </div>
     )
@@ -13,13 +13,11 @@ export default class Footer  extends Component{
 
 const css={
   footer:{
+    height: 60, /*To match the main content margin*/
     backgroundColor: "#8c9e8a",
-    bottom: "0px",
-    fontSize: "20px",
-    left: "0px",
-    marginTop: "10px",
-    padding: "10px",
-    position: "absolute",
+    fontSize: 20,
+    padding: 10,
+    overflow: "hidden",
     textAlign:"center",
     width: "100%",
   }

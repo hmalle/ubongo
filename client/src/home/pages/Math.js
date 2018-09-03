@@ -1,5 +1,6 @@
 
 import React, { Component } from "react";
+import pagecss from "./pagestyles.js";
 
 export default class math  extends Component{
   state={
@@ -32,7 +33,7 @@ export default class math  extends Component{
       num1=Math.floor((Math.random()*100) + 100);
       num2=Math.floor((Math.random()*100) + 100);
       ans = num1 * num2;
-      op = "*";
+      op = "x";
     }else{
       //Division
       num2=Math.floor((Math.random()*100) + 1);
@@ -77,42 +78,53 @@ export default class math  extends Component{
   }
 
   render(){
-    const content = this.state.num1 ? (
-      <div>
-        <div style={css.score}>
+    const content=this.state.num1 ? (
+      <div className="container" style={css.container}>
+        <div clasName="container" style={css.score}>
           <p> Score: {this.state.score} / {this.state.total}</p>
         </div>
-        <div style={css.question}>
-          <p>{this.state.num1} {this.state.op} {this.state.num2} </p>
+        <div className="container" style={css.question}>
+          <p>Question:<strong style={css.strong}>{this.state.num1} {this.state.op} {this.state.num2}</strong></p>
         </div>
-        <div>
-          <form 
-            onSubmit={this.handleSubmit}
-            style={css.form}
-          >
-            <textarea
-              name="answer"
-              onChange={this.handleChange}
-              placeholder="answer"
-              style={css.textArea}
-              type="text" 
-              value={this.state.answer}
-            />
-            <br/>
-            <button style={css.submitBtn} type="submit">Submit</button>
+        <div className="container">
+          <form onSubmit={this.handleSubmit} style={css.form} >
+            <div className="form-group">
+              <input 
+                type="text" 
+                className="form-control" 
+                name="Enter your answer"
+                style={css.textarea}
+                value={this.state.answer}
+                onChange={this.handleChange}
+                placeholder="11234..."/>
+            </div>
+            <button 
+              className="btn" 
+              style={css.submitBtn} 
+              type="submit">
+              Submit
+            </button>
           </form>
         </div>
       </div>
-    ): ( null);
+    ):(null);
 
     return(
       <div style={css.all}>
-        <div style={css.container}>
-          <h3 style={css.math}>Math</h3>
-          <div style={css.startstopbtn}>
-            <button style={css.btncss} onClick={()=>{this.start()}} >Start</button>
-            <button style={css.btncss} onClick={()=>{this.stop()}} >Stop</button>
-          </div>
+        <div>
+          <ul className="nav">
+            <li className="nav-item">
+              <a style={pagecss.header}>Poems</a>
+            </li>
+            <li className="nav-item">
+              <a style={pagecss.li_a_css} onClick={()=>{this.start()}}>Start</a>
+            </li>            
+            <li className="nav-item">
+              <a style={pagecss.li_a_css} onClick={()=>{this.stop()}}>Stop</a>
+            </li>
+          </ul>
+        </div>
+        <div>
           {content}
         </div>
       </div>
@@ -126,59 +138,35 @@ const css={
   },
   container:{
     width: "80%",
-    border: "1px solid black",
+    margin: "0 auto",
     borderRadius: 5,
-    height: 300,
-    margin: "auto",
+    border: "1px solid #8c9e8a",
     align: "center",
-  },
-  math:{
-    fontSize: 30,
-    fontWeight: 600,
-    textAlign: "center",
-  },
-  startstopbtn:{
-    textAlign: "center",
-  },
-  btncss:{
-    border:"1px solid black",
-    fontWeight:"600",
-    width: 150,
-    marginLeft: 4,
-    fontSize: 20,
-    backgroundColor: "#007580",
-    borderRadius:5,
-  },
-  form:{
-    width: "100%",
   },
   score: {
     fontSize: 25,
-    fontColor: "#f2f2f2",
+    textAlign: "center",
+    color: "#000000",
+  },
+  strong:{
+    marginLeft: 30,
   },
   question:{
-    fontSize: 30,
-    fontWeight: 600,
-    border: "1px solid teal",
-    borderRadius: 5,
-    textAlign: "center",
+    fontSize: 25,
   },
-  textArea:{
-    height: 50,
+  textarea:{
     fontSize: 20,
-    width: "100%",
-    maxWidth: "99.8%",
-    borderRadius: 5,
-    border: "1px solid teal",
+    height: 40,
   },
   submitBtn:{
     borderRadius:3,
     height: 40,
-    fontWight: 600,
+    width: 200,
+    fontWeight: 600,
     marginTop: 10,
+    marginBottom: 10,
     fontSize: 20,
-    width: "100%",
-    backgroundColor: "teal",
+    backgroundColor: "#8c9e8a",
     marginRight: 4,
     align:"center",
   },

@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import ImagesDisplay from "../components/ImagesDisplay";
 import CardsRecite from "../components/CardsRecite";
+import css from "./pagestyles.js";
 
 export default class Cards  extends Component{
   state={
@@ -99,15 +100,27 @@ export default class Cards  extends Component{
     ):(
       <ImagesDisplay images={this.state.cards} folder={this.state.folder}/>
     )
-      
+
     return(
       <div>
-        <h3>Cards</h3>
         <div>
-          <button style={css.btncss} onClick={()=>{this.generateNewSession()}} >Generate</button>
-          <button style={css.btncss} onClick={()=>{this.saveSession()}} >Save</button>
-          <button style={css.btncss} onClick={()=>{this.restoreSession()}} >Restore</button>
-          <button style={css.btncss} onClick={()=>{this.recite()}} >Recite</button>
+          <ul className="nav">
+            <li className="nav-item">
+              <a style={css.header}>Cards</a>
+            </li>
+            <li className="nav-item">
+              <a style={css.li_a_css} onClick={()=>{this.generateNewSession()}} >Generate</a>
+            </li>            
+            <li className="nav-item">
+              <a style={css.li_a_css} onClick={()=>{this.saveSession()}} >Save</a>
+            </li>
+            <li className="nav-item">
+              <a style={css.li_a_css} onClick={()=>{this.restoreSession()}} >Restore</a>
+            </li>            
+            <li className="nav-item"> 
+              <a style={css.li_a_css} onClick={()=>{this.recite()}} >Recite</a>
+            </li>
+          </ul>
         </div>
         <div> 
           {content}
@@ -115,24 +128,5 @@ export default class Cards  extends Component{
       </div>
     )
   };
-}
-
-const css={ 
-  cardcss:{
-    width:"150px",
-    float:"left",
-    height:"180px",
-    border:"2px solid teal",
-    margin: 2,
-    borderRadius: 8,
-  },
-  btncss:{
-    border:"1px solid black",
-    fontWeight:"600",
-    marginLeft: 4,
-    fontSize: 20,
-    backgroundColor: "#007580",
-    borderRadius:5,
-  },
 }
 

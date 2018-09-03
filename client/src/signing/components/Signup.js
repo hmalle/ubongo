@@ -107,7 +107,7 @@ export default class Signup extends Component{
               value={this.state.passwordConfirmation}
             />
             <br/>
-            <input style={css.submitBtn} type="submit" value="create account"/>
+            <input style={css.submitBtn} type="submit" value="Create account"/>
           </form>
           <br/>
           <div>

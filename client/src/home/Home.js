@@ -37,9 +37,7 @@ export default class App extends Component {
         return (<Math username={this.props.username}/>);
       case 21:
         return (<Cards username={this.props.username}/>);
-      case 22: 
-        return (<Images username={this.props.username}/>);
-      case 23:
+      case 22: return (<Images username={this.props.username}/>); case 23:
         return (<Numbers username={this.props.username}/>);
       case 24:
         return (<People username={this.props.username}/>);
@@ -57,14 +55,16 @@ export default class App extends Component {
   render(){
     const content = this.renderPage();
     return (
-      <div>
-        <div className="container-fluid" style={css.header}>
-          <Header setPageIndex={this.setPageIndex.bind(this)} triggerSignOut={this.triggerSignOut.bind(this)}/>
+      <div style={css.allcontent}>
+        <div style={css.mainContent}>
+          <div className="container-fluid" style={css.header}>
+            <Header setPageIndex={this.setPageIndex.bind(this)} triggerSignOut={this.triggerSignOut.bind(this)}/>
+          </div>
+          <div className="container-fluid" style={css.content}>
+            {content} 
+          </div>
         </div>
-        <div className="container-fluid" style={css.content}>
-          {content} 
-        </div>
-        <div className="footer">
+        <div className="footer" style={css.footerDiv}>
           <Footer/>
         </div>
       </div>
@@ -73,19 +73,27 @@ export default class App extends Component {
 }
 
 const css={ 
-  header:{
-    marginTop: 2,
+  allcontent:{
+    margin: 0,
+    minHeight: "100%",
+    position: "relative",
+  },
+  mainContent:{
+    minHeight: "100vh",
+    marginBottom: -60,
   },
   content:{
     marginTop:2,
+    paddingBottom: 100, /*to support the footer*/
   },
-  signbtn:{
-    backgroundColor: "#007580",
-    border:"1px solid black",
-    borderRadius:5,
-    fontSize: 25,
-    marginTop: 10,
-    marginRight: 10,
+  footerDiv:{
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+  header:{
+    marginTop: 2,
   },
 }
 

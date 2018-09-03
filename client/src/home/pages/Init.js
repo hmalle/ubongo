@@ -12,7 +12,7 @@ export default class Cards  extends Component{
     return(
       <div className="container-fluid">
         <div className="container" style={css.disclaimer}>
-          This site requires some serious UI/UX work
+          Note: Site still under construction
         </div>
         <div className="container" style={css.intro}>
           This is a brain training program, 
@@ -27,8 +27,8 @@ export default class Cards  extends Component{
 
 const css={
   disclaimer:{
-    color: "red",
-    fontSize: 30,
+    color: "#8b6969",
+    fontSize: 20,
     marginBottom: 30,
   },
   intro:{

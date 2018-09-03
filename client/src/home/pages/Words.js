@@ -1,5 +1,6 @@
 
 import React, { Component } from "react";
+import css from "./pagestyles.js";
 import axios from "axios";
 
 export default class Words  extends Component{
@@ -45,29 +46,30 @@ export default class Words  extends Component{
  render(){
     return(
       <div>
-        <h3>Words</h3>
         <div>
-          <button style={css.btncss} onClick={()=>{this.generateNewSession()}} >Generate</button>
-          <button style={css.btncss} onClick={()=>{this.saveSession()}} >Save</button>
-          <button style={css.btncss} onClick={()=>{this.restoreSession()}} >Restore</button>
-          <button style={css.btncss} onClick={()=>{this.recite()}} >Recite</button>
+          <ul className="nav">
+            <li className="nav-item">
+              <a style={css.header}>Words</a>
+            </li>
+            <li className="nav-item">
+              <a style={css.li_a_css} onClick={()=>{this.generateNewSession()}} >Generate</a>
+            </li>            
+            <li className="nav-item">
+              <a style={css.li_a_css} onClick={()=>{this.saveSession()}} >Save</a>
+            </li>
+            <li className="nav-item">
+              <a style={css.li_a_css} onClick={()=>{this.restoreSession()}} >Restore</a>
+            </li>            
+            <li className="nav-item"> <a style={css.li_a_css} onClick={()=>{this.recite()}} >Recite</a>
+            </li>
+          </ul>
         </div>
+
         <div>
-          <p>Words</p>
+          <h2>No content here</h2>
         </div>
       </div>
     )
   };
-}
-
-const css={ 
-  btncss:{
-    border:"1px solid black",
-    fontWeight:"600",
-    marginLeft: 4,
-    fontSize: 20,
-    backgroundColor: "#007580",
-    borderRadius:5,
-  },
 }
 

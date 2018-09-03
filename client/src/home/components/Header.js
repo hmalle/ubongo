@@ -195,6 +195,8 @@ const css={
   logoutbtn:{
     borderRadius: 5,
     width: 100,
+    border: "1px solid #19a3a3",
+    textAlign: "center",
     fontSize: 16,
     marginLeft: 2,
     marginRight: 2,

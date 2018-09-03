@@ -82,7 +82,7 @@ export default class Signin extends Component{
               value={this.state.password}
             />
             <br/>
-            <input style={css.submitBtn} type="submit" value="sign in" />
+            <input style={css.submitBtn} type="submit" value="Sign in" />
           </form>
           <br/>
           <div>
