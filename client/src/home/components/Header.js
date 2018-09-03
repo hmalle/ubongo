@@ -4,34 +4,36 @@ import React, { Component } from "react"; export default class Header  extends C
     mathMenu: false,
     memoryMenu: false,
     puzzleMenu: false,
+    logouthoover: false,
   }
-  
   toggleMathMenu(){
     this.setState({
       mathMenu: !this.state.mathMenu,
     });
   }
-
   toggleMemoryMenu(){
     this.setState({
       memoryMenu: !this.state.memoryMenu,
     });
   }
-
   togglePuzzleMenu(){
     this.setState({
       puzzleMenu: !this.state.puzzleMenu,
     });
   }
-
   triggerSignOut(){
     this.props.signMeOut();
   }
-
+  didhooverlogout(){
+    this.setState({
+      logouthoover: !this.state.logouthoover,
+    });
+  }
+ 
   render(){
     return(
-      <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light" style={css.navbar}>
+      <div style={css.container}>
+        <nav className="navbar navbar-expand-md navbar-light bg-light" style={css.navbar}>
           <div 
             className="navbar-brand" 
             style={css.brand} 
@@ -39,8 +41,7 @@ import React, { Component } from "react"; export default class Header  extends C
             Ubongo
           </div>
           <button 
-            className="navbar-toggler" 
-            type="button" 
+            className="navbar-toggler ml-auto" 
             data-toggle="collapse" 
             data-target="#navbarSupportedContent" 
             aria-controls="navbarSupportedContent" 
@@ -48,103 +49,104 @@ import React, { Component } from "react"; export default class Header  extends C
             aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <div className="float-left">
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item dropdown">
-                  <button className="nav-link dropdown-toggle" 
-                    id="navbarDropdown1" 
-                    style={css.dropdownbtn}
-                    data-toggle="dropdown" 
-                    aria-haspopup="true" 
-                    aria-expanded="false">
+          <div className="collapse navbar-collapse" style={css.collapse} id="navbarSupportedContent">
+            <ul className="navbar-nav ml-auto" style={css.nav_ul}>
+              <li className="nav-item dropdown" style={css.nav_li}>
+                <a 
+                  className="nav-link dropdown-toggle" 
+                  id="navbarDropdown1" 
+                  style={css.dropdownbtn}
+                  data-toggle="dropdown" 
+                  aria-haspopup="true" 
+                  aria-expanded="false">
+                  Math
+                </a>
+                <div className="dropdown-menu" style={css.dropdownmenu} aria-labelledby="navbarDropdown1">
+                  <a 
+                    className="dropdown-item"
+                    style={css.menuitem} 
+                    onClick={()=>{this.props.setPageIndex(11)}}>
                     Math
-                  </button>
-                  <div className="dropdown-menu" aria-labelledby="navbarDropdown1">
-                    <a 
-                      style={css.menuitem} 
-                      onClick={()=>{this.props.setPageIndex(11)}}>
-                      Math
-                    </a>
-                  </div>
-                </li>
-                <li className="nav-item dropdown">
-                  <button 
-                    className="nav-link dropdown-toggle" 
-                    id="navbarDropdown2" 
-                    style={css.dropdownbtn}
-                    data-toggle="dropdown" 
-                    aria-haspopup="true" 
-                    aria-expanded="false">
-                    Memory
-                  </button>
-                  <div className="dropdown-menu" aria-labelledby="navbarDropdown2">
-                    <a 
-                      className="dropdown-item" 
-                      style={css.menuitem} 
-                      onClick={()=>{this.props.setPageIndex(21)}}>
-                      Cards
-                    </a>
-                    <a 
-                      className="dropdown-item" 
-                      style={css.menuitem} 
-                      onClick={()=>{this.props.setPageIndex(22)}}>
-                      Images
-                    </a>
-                    <a 
-                      className="dropdown-item" 
-                      style={css.menuitem} 
-                      onClick={()=>{this.props.setPageIndex(23)}}>
-                      Numbers
-                    </a>
-                    <a 
-                      className="dropdown-item" 
-                      style={css.menuitem} 
-                      onClick={()=>{this.props.setPageIndex(24)}}>
-                      People
-                    </a>
-                    <a 
-                      className="dropdown-item" 
-                      style={css.menuitem} 
-                      onClick={()=>{this.props.setPageIndex(25)}}>
-                      Poems
-                    </a>
-                    <a 
-                      className="dropdown-item" 
-                      style={css.menuitem} 
-                      onClick={()=>{this.props.setPageIndex(26)}}>
-                      Words
-                    </a>
-                  </div>
-                </li>
-                <li className="nav-item dropdown">
-                  <button 
-                    className="nav-link dropdown-toggle" 
-                    id="navbarDropdown3" 
-                    style={css.dropdownbtn}
-                    data-toggle="dropdown" 
-                    aria-haspopup="true" 
-                    aria-expanded="false">
+                  </a>
+                </div>
+              </li>
+              <li className="nav-item dropdown" style={css.nav_li}>
+                <a 
+                  className="nav-link dropdown-toggle" 
+                  id="navbarDropdown2" 
+                  style={css.dropdownbtn}
+                  data-toggle="dropdown" 
+                  aria-haspopup="true" 
+                  aria-expanded="false">
+                  Memory
+                </a>
+                <div className="dropdown-menu" style={css.dropdownmenu} aria-labelledby="navbarDropdown2">
+                  <a 
+                    className="dropdown-item" 
+                    style={css.menuitem} 
+                    onClick={()=>{this.props.setPageIndex(21)}}>
+                    Cards
+                  </a>
+                  <a 
+                    className="dropdown-item" 
+                    style={css.menuitem} 
+                    onClick={()=>{this.props.setPageIndex(22)}}>
+                    Images
+                  </a>
+                  <a 
+                    className="dropdown-item" 
+                    style={css.menuitem} 
+                    onClick={()=>{this.props.setPageIndex(23)}}>
+                    Numbers
+                  </a>
+                  <a 
+                    className="dropdown-item" 
+                    style={css.menuitem} 
+                    onClick={()=>{this.props.setPageIndex(24)}}>
+                    People
+                  </a>
+                  <a 
+                    className="dropdown-item" 
+                    style={css.menuitem} 
+                    onClick={()=>{this.props.setPageIndex(25)}}>
+                    Poems
+                  </a>
+                  <a 
+                    className="dropdown-item" 
+                    style={css.menuitem} 
+                    onClick={()=>{this.props.setPageIndex(26)}}>
+                    Words
+                  </a>
+                </div>
+              </li>
+              <li className="nav-item dropdown" style={css.nav_li}>
+                <a 
+                  className="nav-link dropdown-toggle" 
+                  id="navbarDropdown3" 
+                  style={css.dropdownbtn}
+                  data-toggle="dropdown" 
+                  aria-haspopup="true" 
+                  aria-expanded="false">
+                  Puzzles
+                </a>
+                <div className="dropdown-menu" style={css.dropdownmenu} aria-labelledby="navbarDropdown3">
+                  <a 
+                    className="dropdown-item" 
+                    style={css.menuitem} 
+                    onClick={()=>{this.props.setPageIndex(31)}}>
                     Puzzles
-                  </button>
-                  <div className="dropdown-menu" aria-labelledby="navbarDropdown3">
-                    <a 
-                      className="dropdown-item" 
-                      style={css.menuitem} 
-                      onClick={()=>{this.props.setPageIndex(31)}}>
-                      Puzzles
-                    </a>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div className="float-right">
-              <button
-                style={css.menuitem} 
-                onClick={()=>{this.props.triggerSignOut()}}>
-                Logout
-              </button>
-            </div>
+                  </a>
+                </div>
+              </li>
+              <li className="nav-item" style={css.nav_li}>
+                <a
+                  className="nav-link"
+                  style={css.logoutbtn} 
+                  onClick={()=>{this.props.triggerSignOut()}}>
+                  Logout
+                </a>
+              </li>
+            </ul>
           </div>
         </nav>
       </div>
@@ -153,25 +155,49 @@ import React, { Component } from "react"; export default class Header  extends C
 }
 
 const css={ 
+  container:{
+    //
+  },
   navbar:{
     fontSize: 20,
   },
+  nav_ul:{
+    
+  },
+  nav_li:{
+    float:"right",
+  },
+  collapse:{
+    float: "right",
+  },
   brand:{
-    backgroundColor: "#7b887c",
+    /*backgroundColor: "#7b887c",*/
     fontSize: 25,
     borderRadius: 4,
+    fontWeight: 700,
+    fontStyle: "oblique",
+    backgroundColor: "#8c9e8a",
+  },
+  dropdownmenu:{
+    borderRadius: 5,
+  },
+  dropdownbtn:{
+    borderRadius: 5,
+    width: 100,
+    fontSize: 16,
+    marginLeft: 2,
+    marginRight: 2,
   },
   menuitem:{
     fontSize: 18,
     color: "#0c0c0c",
-    textAlign: "center",
   },
-  dropdownbtn:{
+  logoutbtn:{
     borderRadius: 5,
-    backgroundColor: "#7b887c",
-    border: "1px solid #0c0c0c",
+    width: 100,
+    fontSize: 16,
     marginLeft: 2,
     marginRight: 2,
+    color: "#71ada5",
   },
 }
-

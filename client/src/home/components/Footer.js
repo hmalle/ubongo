@@ -13,7 +13,7 @@ export default class Footer  extends Component{
 
 const css={
   footer:{
-    backgroundColor: "teal",
+    backgroundColor: "#8c9e8a",
     bottom: "0px",
     fontSize: "20px",
     left: "0px",
