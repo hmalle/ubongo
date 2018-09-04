@@ -1,6 +1,6 @@
 
-# BRAAAAAINS
+# UBONGO
 ---
-###  A mental/brain training app thats still under development
+###  A mental/brain exercising app thats still under development
 ---
-#### Please come back laters.
+ [Ubongo](http://ubongo.herokuapp.com)

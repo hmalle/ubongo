@@ -1,25 +1,7 @@
 
 import React, { Component } from "react"; export default class Header  extends Component{
   state={
-    mathMenu: false,
-    memoryMenu: false,
-    puzzleMenu: false,
     logouthoover: false,
-  }
-  toggleMathMenu(){
-    this.setState({
-      mathMenu: !this.state.mathMenu,
-    });
-  }
-  toggleMemoryMenu(){
-    this.setState({
-      memoryMenu: !this.state.memoryMenu,
-    });
-  }
-  togglePuzzleMenu(){
-    this.setState({
-      puzzleMenu: !this.state.puzzleMenu,
-    });
   }
   triggerSignOut(){
     this.props.signMeOut();
@@ -171,12 +153,11 @@ const css={
     float: "right",
   },
   brand:{
-    /*backgroundColor: "#7b887c",*/
     fontSize: 25,
     borderRadius: 4,
     fontWeight: 700,
     fontStyle: "oblique",
-    backgroundColor: "#8c9e8a",
+    backgroundColor: "#86bbbd",
   },
   dropdownmenu:{
     borderRadius: 5,
@@ -184,12 +165,13 @@ const css={
   dropdownbtn:{
     borderRadius: 5,
     width: 100,
-    fontSize: 16,
+    fontSize: 18,
     marginLeft: 2,
     marginRight: 2,
+    color: "#323232",
   },
   menuitem:{
-    fontSize: 18,
+    fontSize: 16,
     color: "#0c0c0c",
   },
   logoutbtn:{

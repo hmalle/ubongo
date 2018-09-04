@@ -11,7 +11,6 @@ export default class Images  extends Component{
     recitation : [],
     recite: false,
   }
-
   shuffle(array){
     let i=0, j=0, temp=null;
     for( i=array.length-1; i>0;i-=1){
@@ -21,7 +20,6 @@ export default class Images  extends Component{
       array[j]=  temp;
     }
   }
-
   generateNewSession(){
     let randArray = [];
     for(let iter=1; iter<=20; iter++){
@@ -33,7 +31,6 @@ export default class Images  extends Component{
       recite: false,
     });
   }
-
   saveSession(){
     if(this.state.images.length <=2){
       alert("Nothing to save");
@@ -57,7 +54,6 @@ export default class Images  extends Component{
       console.log(">>> error: "+ err);
     });
   }  
-
   restoreSession(){
     axios({
       method:"post",
@@ -76,11 +72,9 @@ export default class Images  extends Component{
       console.log(">>> error: "+ err);
     });
   }
-
   recite(){
     alert("Training in session");
   }
-
   render(){
     return(
       <div>

@@ -1,7 +1,6 @@
 
 import React, { Component } from "react";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
 import Init from "./pages/Init";
 import Cards from "./pages/Cards";
 import Images from "./pages/Images";
@@ -58,14 +57,19 @@ export default class App extends Component {
       <div style={css.allcontent}>
         <div style={css.mainContent}>
           <div className="container-fluid" style={css.header}>
-            <Header setPageIndex={this.setPageIndex.bind(this)} triggerSignOut={this.triggerSignOut.bind(this)}/>
+            <Header 
+              setPageIndex={this.setPageIndex.bind(this)} 
+              triggerSignOut={this.triggerSignOut.bind(this)}/>
           </div>
           <div className="container-fluid" style={css.content}>
             {content} 
           </div>
         </div>
-        <div className="footer" style={css.footerDiv}>
-          <Footer/>
+        <div style={css.footerDiv}>
+          <div className="footer" style={css.footer}>
+            <p>&copy;Copyright 2018 Hillary Malle </p>
+          </div>
+
         </div>
       </div>
     );
@@ -75,6 +79,7 @@ export default class App extends Component {
 const css={ 
   allcontent:{
     margin: 0,
+    padding: 0,
     minHeight: "100%",
     position: "relative",
   },
@@ -92,8 +97,18 @@ const css={
     left: 0,
     right: 0,
   },
+  footer:{
+    height: 60, /*To match the main content margin*/
+    backgroundColor: "#8c9e8a",
+    fontSize: 20,
+    padding: 10,
+    overflow: "hidden",
+    textAlign:"center",
+    width: "100%",
+  },
   header:{
-    marginTop: 2,
+    margin: 0,
+    padding: 0,
   },
 }
 

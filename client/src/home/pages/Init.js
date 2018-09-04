@@ -11,7 +11,7 @@ export default class Cards  extends Component{
   render(){
     return(
       <div className="container-fluid">
-        <div className="container" style={css.disclaimer}>
+        <div className="container" style={css.note}>
           Note: Site still under construction
         </div>
         <div className="container" style={css.intro}>
@@ -26,8 +26,8 @@ export default class Cards  extends Component{
 }
 
 const css={
-  disclaimer:{
-    color: "#8b6969",
+  note:{
+    color: "#d64933",
     fontSize: 20,
     marginBottom: 30,
   },

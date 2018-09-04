@@ -92,11 +92,11 @@ export default class math  extends Component{
               <input 
                 type="text" 
                 className="form-control" 
-                name="Enter your answer"
+                name="answer"
                 style={css.textarea}
                 value={this.state.answer}
                 onChange={this.handleChange}
-                placeholder="11234..."/>
+                placeholder="123..."/>
             </div>
             <button 
               className="btn" 
@@ -114,7 +114,7 @@ export default class math  extends Component{
         <div>
           <ul className="nav">
             <li className="nav-item">
-              <a style={pagecss.header}>Poems</a>
+              <a style={pagecss.header}>Mental Math</a>
             </li>
             <li className="nav-item">
               <a style={pagecss.li_a_css} onClick={()=>{this.start()}}>Start</a>
@@ -137,11 +137,14 @@ const css={
     width:"100%",
   },
   container:{
-    width: "80%",
+    width: 700,
     margin: "0 auto",
     borderRadius: 5,
     border: "1px solid #8c9e8a",
     align: "center",
+  },
+  form:{
+    width: "100%",
   },
   score: {
     fontSize: 25,
@@ -161,7 +164,7 @@ const css={
   submitBtn:{
     borderRadius:3,
     height: 40,
-    width: 200,
+    width: "100%",
     fontWeight: 600,
     marginTop: 10,
     marginBottom: 10,

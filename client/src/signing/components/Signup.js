@@ -49,8 +49,7 @@ export default class Signup extends Component{
           alert("Signup failed");
         }
       }).catch( (err) =>{
-        //TODO: Fix this to avoid spitting password informations on the error log
-        console.log(">>>Error :"+ err);
+        console.log(">>>Error signing up");   //Don't spit out the error message
       });
 
       //clear input fields

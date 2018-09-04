@@ -44,8 +44,8 @@ export default class Signin extends Component{
           alert("Signin failed");
         }
       }).catch( (err) =>{
-        //TODO: Fix this so the error log doesnt spit password in the  error log
-        console.log(">>>Error :"+ err);
+        //console.log(">>>Error :"+ err); //Dont spit the password
+        console.log(">>>Error Logging in");
       });
 
       //clear input field

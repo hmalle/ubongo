@@ -1,7 +1,6 @@
 
 import React, { Component } from "react";
 import axios from "axios";
-import ImagesDisplay from "../components/ImagesDisplay";
 import CardsRecite from "../components/CardsRecite";
 import css from "./pagestyles.js";
 
@@ -11,6 +10,7 @@ export default class Cards  extends Component{
     cards : [],
     recitation: [],
     reciting: false,
+    generating: false,
     score: 0,
   }
 
@@ -38,6 +38,7 @@ export default class Cards  extends Component{
     this.setState({
       cards: this.cardsArray,
       reciting:false,
+      generating: true,
     });
   }
 
@@ -66,6 +67,7 @@ export default class Cards  extends Component{
   }
 
   restoreSession(){
+    //TODO: This gives a 501 error
     axios({
       method:"post",
       url:"/api/retrieve/session",
@@ -88,18 +90,40 @@ export default class Cards  extends Component{
     this.setState({
       recitation: this.state.cards,
       reciting: true,
+      generating: false,
       cards:[],
     });
   }
 
   render(){
-    const content = this.state.reciting ? (
-      <CardsRecite 
-        validCards={this.cardsArray} 
-        images={this.state.recitation}/>
-    ):(
-      <ImagesDisplay images={this.state.cards} folder={this.state.folder}/>
-    )
+    var content;
+    if(this.state.reciting){
+      content=(
+        <CardsRecite 
+          validCards={this.cardsArray} 
+          images={this.state.recitation}
+        />
+      )
+    }else if(this.state.generating){
+      content=(
+        <div className="container" style={thiscss.imagesContainer}>
+          {this.cardsArray.map( (image,index) => (
+            <div key={index}>
+              <img className="rounded float-left" 
+                style={thiscss.imgcss} src={this.state.folder+image+".jpg"}
+                alt="No Content"
+                key={index}
+              />
+            </div>
+          ))}
+        </div>
+      )
+    }else{
+      content=(
+        <div>
+        </div>
+      );
+    }
 
     return(
       <div>
@@ -130,3 +154,15 @@ export default class Cards  extends Component{
   };
 }
 
+const thiscss={ 
+  imagesContainer:{
+    //What to do what to do?
+  },
+  imgcss:{
+    width: 150,
+    height: 80,
+    margin: 3,
+    borderBottom: "1px solid #98c1d9",
+    borderRadius: 8,
+  },
+}
