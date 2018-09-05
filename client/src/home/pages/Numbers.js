@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import NumbersRecite from "../components/NumbersRecite";
-import css from "./pagestyles.js";
+import navcss from "./pagestyles.js";
 
 export default class Numbers  extends Component{
   state={
@@ -80,11 +80,11 @@ export default class Numbers  extends Component{
   getContent(){
     if(this.state.numbersSet && !this.state.reciting){
       return(
-        <div style={css.numberBox}>
+        <div className="container" style={navcss.numberBox}>
           {this.state.numbers.map( (num,index) => (
-            <div
-              key={index}
-            >
+            <div 
+              style={css.numberRow}
+              key={index}>
               {num} - Row {++index}
             </div>
           ))}
@@ -101,25 +101,24 @@ export default class Numbers  extends Component{
 
   render(){
     const content= this.getContent();
-
     return(
       <div>
         <div>
           <ul className="nav">
             <li className="nav-item">
-              <a style={css.header}>Numbers</a>
+              <a style={navcss.header}>Numbers</a>
             </li>
             <li className="nav-item">
-              <a style={css.li_a_css} onClick={()=>{this.generateNewSession()}} >Generate</a>
+              <a style={navcss.li_a_css} onClick={()=>{this.generateNewSession()}} >Generate</a>
             </li>            
             <li className="nav-item">
-              <a style={css.li_a_css} onClick={()=>{this.saveSession()}} >Save</a>
+              <a style={navcss.li_a_css} onClick={()=>{this.saveSession()}} >Save</a>
             </li>
             <li className="nav-item">
-              <a style={css.li_a_css} onClick={()=>{this.restoreSession()}} >Restore</a>
+              <a style={navcss.li_a_css} onClick={()=>{this.restoreSession()}} >Restore</a>
             </li>            
             <li className="nav-item"> 
-              <a style={css.li_a_css} onClick={()=>{this.recite()}} >Recite</a>
+              <a style={navcss.li_a_css} onClick={()=>{this.recite()}} >Recite</a>
             </li>
           </ul>
         </div>
@@ -131,3 +130,11 @@ export default class Numbers  extends Component{
   };
 }
 
+const css={
+  numberBox:{
+
+  },
+  numberRow:{
+    fontSize: 16,
+  },
+}

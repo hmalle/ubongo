@@ -67,7 +67,8 @@ export default class math  extends Component{
   handleSubmit = event => {
     event.preventDefault();
     if(parseFloat(this.state.ans)===parseFloat(this.state.answer)){ 
-      this.setState({score: this.state.score+=1});
+      let tempscore = this.state.score+1;
+      this.setState({score: tempscore});
     }
     let tt = this.state.total + 1;
     this.setState({

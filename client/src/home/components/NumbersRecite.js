@@ -22,7 +22,7 @@ export default class NumbersRecite  extends Component{
   isDigit(str) {
     return str && !/[^\d]/.test(str);
   }
-
+  
   handleSubmit = event => {
     event.preventDefault();
     let ans=[];
@@ -31,8 +31,9 @@ export default class NumbersRecite  extends Component{
         ans.push(this.state.answer[a]);
       }
     }
-    this.setState({answerArray:ans}, 
-      ()=> this.checkAnswer());
+    this.setState({
+      answerArray:ans
+    },()=> this.checkAnswer());
   }
   
   validation(){
@@ -57,6 +58,7 @@ export default class NumbersRecite  extends Component{
     if(!this.validation() ){
       return;
     }
+    alert("In check answer");
     let numbers=this.convertNumbers();
     let minLength = numbers.length < this.state.answerArray.length ?
       numbers.length : this.state.answerArray.length;
@@ -71,28 +73,30 @@ export default class NumbersRecite  extends Component{
 
   render(){
     return(
-      <div>
-        <div>
+      <div className="container">
+        <div style={css.score}>
           <p>Score: {this.state.score} </p>
         </div>
-
         <div style={css.all}>
-          <div>
-            Enter your answer
-          </div>
-          <form 
-            onSubmit={this.handleSubmit}
-            style={css.form}
-          >
-            <textarea
-              name="answer"
-              onChange={this.handleChange}
-              placeholder="answer"
-              style={css.textArea}
-              type="text" 
-              value={this.state.answer}
-            />
-            <input style={css.submitBtn} type="submit" value="Submit" />
+          <form onSubmit={this.handleSubmit} style={css.form}>
+            <div className="form-group">
+              <label style={css.label}>Enter your answer</label>
+              <input
+                style={css.textArea}
+                value={this.state.answer}
+                onChange={this.handleChange}
+                type="text"
+                name="answer"
+                className="form-control"
+                placeholder="answer"
+              />
+            </div>
+            <button 
+              type="submit" 
+              className="btn" 
+              style={css.submitBtn}>
+              Submit
+            </button>
           </form>
         </div>
       </div>
@@ -102,31 +106,30 @@ export default class NumbersRecite  extends Component{
 
 const css={ 
   all:{
-    border: "1px solid black",
-    width:"50%",
+    border: "1px solid #86bbbd",
+    borderRadius: 10,
+  },
+  label:{
+    fontSize: 20,
+  },
+  answer:{
+    fontSize: 20,
   },
   form:{
-    border:"2px solid teal",
+    height:"100%",
+    margin: 10,
   },
   score: {
     fontHeight: 30,
+    fontSize: 20,
   },
   textArea:{
-    maxWidth: "99%",
-    width: "99%",
-    height: 200,
-    align:"center",
+    height: 50,
+    fontSize: 20,
   },
   submitBtn:{
-    width: "99%",
-    borderRadius:5,
-    marginTop: 10,
-    height: 30,
-    marginLeft: 4,
-    fontWeight: 600,
-    fontSize: 20,
-    backgroundColor: "teal",
-    marginRIght: 4,
-    align:"center",
+    width: "100%",
+    backgroundColor: "#4ecdc4",
+    fontSize: 25,
   },
 }

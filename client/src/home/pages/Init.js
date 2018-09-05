@@ -12,7 +12,7 @@ export default class Cards  extends Component{
     return(
       <div className="container-fluid">
         <div className="container" style={css.note}>
-          Note: Site still under construction
+          Note: Site still under construction aka Very buggggggy!!!
         </div>
         <div className="container" style={css.intro}>
           This is a brain training program, 

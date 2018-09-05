@@ -63,11 +63,10 @@ export default class CardsRecite  extends Component{
 
   render(){
     return(
-      <div>
-        <div>
+      <div className="container">
+        <div style={css.score}>
           <p>Score: {this.state.score} </p>
         </div>
-
         <div style={css.all}>
           <div>
             Please enter cards names in the form outlined below.
@@ -121,7 +120,7 @@ const css={
     marginLeft: 4,
     fontWeight: 600,
     fontSize: 20,
-    backgroundColor: "teal",
+    backgroundColor: "#86bbbd",
     marginRight: 4,
     align:"center",
   },

@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import CardsRecite from "../components/CardsRecite";
-import css from "./pagestyles.js";
+import navcss from "./pagestyles.js";
 
 export default class Cards  extends Component{
   state={
@@ -130,19 +130,19 @@ export default class Cards  extends Component{
         <div>
           <ul className="nav">
             <li className="nav-item">
-              <a style={css.header}>Cards</a>
+              <a style={navcss.header}>Cards</a>
             </li>
             <li className="nav-item">
-              <a style={css.li_a_css} onClick={()=>{this.generateNewSession()}} >Generate</a>
+              <a style={navcss.li_a_css} onClick={()=>{this.generateNewSession()}} >Generate</a>
             </li>            
             <li className="nav-item">
-              <a style={css.li_a_css} onClick={()=>{this.saveSession()}} >Save</a>
+              <a style={navcss.li_a_css} onClick={()=>{this.saveSession()}} >Save</a>
             </li>
             <li className="nav-item">
-              <a style={css.li_a_css} onClick={()=>{this.restoreSession()}} >Restore</a>
+              <a style={navcss.li_a_css} onClick={()=>{this.restoreSession()}} >Restore</a>
             </li>            
             <li className="nav-item"> 
-              <a style={css.li_a_css} onClick={()=>{this.recite()}} >Recite</a>
+              <a style={navcss.li_a_css} onClick={()=>{this.recite()}} >Recite</a>
             </li>
           </ul>
         </div>
@@ -162,7 +162,7 @@ const thiscss={
     width: 150,
     height: 80,
     margin: 3,
-    borderBottom: "1px solid #98c1d9",
+    border: "1px solid #98c1d9",
     borderRadius: 8,
   },
 }
