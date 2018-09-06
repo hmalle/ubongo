@@ -1,12 +1,12 @@
 
+/* Cards Recite.js */
+
 import React, { Component } from "react";
 
 export default class CardsRecite  extends Component{
   //props this.props.images
   state={
-    answer:"",
-    answerArray:[],
-    score: 0,
+    folder: "/cards/",
   }
 
   handleChange = event => {
@@ -48,47 +48,60 @@ export default class CardsRecite  extends Component{
     if(!this.validation() ){
       return;
     }
-    console.log("AnswerArray :"+ this.state.answerArray);
-    //Run a comparison of the two arrays to prevent overflow
-    let minLength = this.props.images.length < this.state.answerArray.length ?
-      this.props.images.length : this.state.answerArray.length;
-    for( let a=0;a<minLength;a++){
-      if(this.props.images[a] !== this.state.answerArray[a]){
-        this.setState({score: a});
-        return ;
-      }
-    }
-    this.setState({ score: minLength });
+  }
+ 
+  imageClicked(image){
+    console.log(JSON.stringify(image ,null ,2));
   }
 
   render(){
     return(
-      <div className="container">
-        <div style={css.score}>
-          <p>Score: {this.state.score} </p>
-        </div>
-        <div style={css.all}>
-          <div>
-            Please enter cards names in the form outlined below.
-            separated by a single space
-              j-jack, q-queen, k-king, a-ace
-              2-10  s-spade,d-diamonds,h-hearts,c-clubs
-              eg: 3d means 3 of diamonds,
+      <div className="container-fluid">
+        <div className="col-md-6">
+          <div className="card">
+            <div className="card-header">
+              <p style={css.cardHeader}> Cards </p>
+            </div>
+            <div className="card-body" style={css.cardsSection}>
+              {this.props.cardsArray.map( (image,index) => (
+                <div key={index}>
+                  <img className="rounded float-left" 
+                    style={css.imgcss} src={this.state.folder+image+".jpg"}
+                    onClick={()=>{this.props.addToUserAnswer(image)}}
+                    alt="No Content"
+                    key={index}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-          <form 
-            onSubmit={this.handleSubmit}
-            style={css.form}
-          >
-            <textarea
-              name="answer"
-              onChange={this.handleChange}
-              placeholder="answer"
-              style={css.textArea}
-              type="text" 
-              value={this.state.answer}
-            />
-            <input style={css.submitBtn} type="submit" value="Submit" />
-          </form>
+        </div>
+        <div className="col-md-6">
+          <div className="card">
+            <div className="card-header">
+              <div className="float-left" style={css.cardHeader}>Answer</div>
+              <div className="float-right">
+                <button 
+                  className="btn btn-primary float-right"
+                  style={css.submitBtn}
+                  onClick={()=>{this.props.submitAnswer}}>
+                  Submit
+                </button> 
+              </div>
+            </div>
+            <div className="card-body" style={css.answerSection}>
+              {this.props.userAnswer.map( (image,index) => (
+                <div key={index}>
+                  <img className="rounded float-left" 
+                    style={css.imgcss} src={this.state.folder+image+".jpg"}
+                    onClick={()=>{this.props.removeFromAnswer(image)}}
+                    alt="No Content"
+                    key={index}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     )
@@ -96,33 +109,28 @@ export default class CardsRecite  extends Component{
 }
 
 const css={ 
-  all:{
-    border: "1px solid black",
-    width:"50%",
+  cardsSection:{
+    height: 500,
+    maxHeight: 800,
+    overflowY: "scroll",
   },
-  form:{
-    border:"2px solid teal",
-  },
-  score: {
-    fontHeight: 30,
-  },
-  textArea:{
-    maxWidth: "99%",
-    width: "99%",
-    height: 200,
-    align:"center",
+  answerSection:{
+    height: 500,
+    overflowY: "scroll",
+    maxHeight: 800,
   },
   submitBtn:{
-    width: "99%",
-    borderRadius:5,
-    marginTop: 10,
-    height: 30,
-    marginLeft: 4,
-    fontWeight: 600,
+    fontSize: 16,
+  },
+  imgcss:{
+    width: 150,
+    height: 80,
+    margin: 3,
+    border: "1px solid #98c1d9",
+    borderRadius: 8,
+  },
+  cardHeader:{
     fontSize: 20,
-    backgroundColor: "#86bbbd",
-    marginRight: 4,
-    align:"center",
   },
 }
 
