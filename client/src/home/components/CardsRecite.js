@@ -60,10 +60,10 @@ export default class CardsRecite  extends Component{
         <div className="col-md-6">
           <div className="card">
             <div className="card-header">
-              <p style={css.cardHeader}> Cards </p>
+              <div style={css.cardHeader}> Cards </div>
             </div>
             <div className="card-body" style={css.cardsSection}>
-              {this.props.cardsArray.map( (image,index) => (
+              {this.props.cards.map( (image,index) => (
                 <div key={index}>
                   <img className="rounded float-left" 
                     style={css.imgcss} src={this.state.folder+image+".jpg"}
@@ -84,7 +84,7 @@ export default class CardsRecite  extends Component{
                 <button 
                   className="btn btn-primary float-right"
                   style={css.submitBtn}
-                  onClick={()=>{this.props.submitAnswer}}>
+                  onClick={()=>{this.props.submitAnswer()}}>
                   Submit
                 </button> 
               </div>
@@ -120,7 +120,7 @@ const css={
     maxHeight: 800,
   },
   submitBtn:{
-    fontSize: 16,
+    fontSize: 15,
   },
   imgcss:{
     width: 150,

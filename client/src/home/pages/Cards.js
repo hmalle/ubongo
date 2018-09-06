@@ -7,15 +7,15 @@ import navcss from "./pagestyles.js";
 export default class Cards  extends Component{
   state={
     folder: "/cards/",
-    cards : [],
-    recitation: [],
+    generatedCards : [],
     userAnswer: [],
     reciting: false,
     generating: false,
+    checkingAnswer: false,
     score: 0,
   }
 
-  cardsArray = [ 
+  cards = [ 
     "2c", "2d", "2h", "2s", "3c", "3d", "3h", "3s", "4c", "4d", "4h", "4s", 
     "5c", "5d", "5h", "5s", "6c", "6d", "6h", "6s", "7c", "7d", "7h", "7s", 
     "8c", "8d", "8h", "8s", "9c", "9d", "9h", "9s", "10c", "10d", "10h", "10s",
@@ -34,15 +34,19 @@ export default class Cards  extends Component{
   }
 
   generateNewSession(){
-    this.shuffle(this.cardsArray);
+    //Deep copy the cards and shuffle them, and save the shuffled cards in this.state.generatedCards
+    let cardsCopy= JSON.parse(JSON.stringify(this.cards));
+    this.shuffle(this.cardsCopy);
     this.setState({
-      cards: this.cardsArray,
+      generatedCards: this.cardsCopy,
       reciting:false,
       generating: true,
+      checkingAnswer: false,
     });
   }
 
   saveSession(){
+    //Save the current session of cards in the database
     if(this.state.cards.length <=2){
       alert("Nothing to save");
       return;
@@ -68,6 +72,7 @@ export default class Cards  extends Component{
 
   restoreSession(){
     //TODO: This gives a 501 error
+    //Restore the saved session from the database
     axios({
       method:"post",
       url:"/api/retrieve/session",
@@ -77,25 +82,26 @@ export default class Cards  extends Component{
       },
     }).then((resp)=>{
       this.setState({ 
-        cards: JSON.parse(resp.data.data),
+        generatedCards: JSON.parse(resp.data.data),
         reciting: false,
+        checkingAnswer: false,
       });
-    }).catch( (err) =>{
+    }).catch((err)=>{
       console.log(">>> error: "+ err);
+      //TODO: Make sure the error isnt spitting user informations
     });
   }
 
   recite(){
     //suits = C: Clubs, D: Diamonds, H:Hearts, S:Spaced, K ,Q,J, A
     this.setState({
-      recitation: this.state.cards,
       reciting: true,
       generating: false,
-      cards:[],
     });
   }
 
   addToUserAnswer(image){
+    //Adds the user input from the CardsRecite to the user Answer
     this.setState({
       userAnswer: this.state.userAnswer.concat(image)
     });
@@ -103,14 +109,17 @@ export default class Cards  extends Component{
 
   removeFromAnswer(image){
     //TODO: Remove the clicked image from the answer
-    this.setState({
-
-    });
   }
 
   submitAnswer(){
     //TODO: Work on this one to check if the answer submitted is correct
-    alert("Answer submitted");
+    this.setState({
+      reciting: false,
+      generating: false,
+      checkingAnswer: true,
+    });
+    //TODO: Compare the answers and display the correct sequence in green padding and incorrect 
+    //cards in red padding
   }
 
   render(){
@@ -118,7 +127,7 @@ export default class Cards  extends Component{
     if(this.state.reciting){
       content=(
         <CardsRecite 
-          cardsArray={this.cardsArray} 
+          cards={this.cards} 
           userAnswer={this.state.userAnswer}
           submitAnswer={this.submitAnswer.bind(this)}
           addToUserAnswer={this.addToUserAnswer.bind(this)}
@@ -128,7 +137,7 @@ export default class Cards  extends Component{
     }else if(this.state.generating){
       content=(
         <div className="container" style={css.imagesContainer}>
-          {this.cardsArray.map( (image,index) => (
+          {this.cards.map( (image,index) => (
             <div key={index}>
               <img className="rounded float-left" 
                 style={css.imgcss} src={this.state.folder+image+".jpg"}
@@ -139,7 +148,16 @@ export default class Cards  extends Component{
           ))}
         </div>
       )
-    }else{
+    }else if(this.state.checkingAnswer){
+      content=(
+        <div>
+          <div>
+            Correct sequences appear in green while the incorrect ones appear in red
+          </div>
+          //TODO Make correct answers apprear in red and correct ones in gree
+        </div>
+      );
+    } else{
       content=(
         <div>
         </div>
