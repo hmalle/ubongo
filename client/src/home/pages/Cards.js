@@ -7,14 +7,15 @@ import navcss from "./pagestyles.js";
 export default class Cards  extends Component{
   state={
     folder: "/cards/",
-    generatedCards : [],
-    userAnswer: [],
+    generatedCards : [],  /*The current sequence of generated cards */
+    userAnswer: [],       /*The answer - given by the user */
     reciting: false,
-    generating: false,
+    generated: false,
     checkingAnswer: false,
     score: 0,
   }
 
+  /* All 52 cards unsorted */
   cards = [ 
     "2c", "2d", "2h", "2s", "3c", "3d", "3h", "3s", "4c", "4d", "4h", "4s", 
     "5c", "5d", "5h", "5s", "6c", "6d", "6h", "6s", "7c", "7d", "7h", "7s", 
@@ -23,24 +24,26 @@ export default class Cards  extends Component{
     "qc", "qd", "qh", "qs", "ac", "ad", "ah", "as"
   ];
 
-  shuffle(array){
-    let i=0, j=0, temp=null;
-    for( i=array.length-1; i>0;i-=1){
+  /* To shufle an array of cards */
+  shuffle(arr){
+    let i=0, j=0, k;
+    for( i=arr.length-1; i>0;i-=1){
       j = Math.floor(Math.random()*(i+1));
-      temp = array[i];
-      array[i]= array[j];
-      array[j]=  temp;
+      k = arr[i];
+      arr[i]= arr[j];
+      arr[j]=  k;
     }
   }
 
   generateNewSession(){
     //Deep copy the cards and shuffle them, and save the shuffled cards in this.state.generatedCards
-    let cardsCopy= JSON.parse(JSON.stringify(this.cards));
-    this.shuffle(this.cardsCopy);
+    var cardsCopy= JSON.parse(JSON.stringify(this.cards));
+    this.shuffle(cardsCopy);
+    console.log("Shuffled\n:"+ cardsCopy);
     this.setState({
-      generatedCards: this.cardsCopy,
+      generatedCards: cardsCopy,
       reciting:false,
-      generating: true,
+      generated: true,
       checkingAnswer: false,
     });
   }
@@ -96,7 +99,7 @@ export default class Cards  extends Component{
     //suits = C: Clubs, D: Diamonds, H:Hearts, S:Spaced, K ,Q,J, A
     this.setState({
       reciting: true,
-      generating: false,
+      generated: false,
     });
   }
 
@@ -111,33 +114,24 @@ export default class Cards  extends Component{
     //TODO: Remove the clicked image from the answer
   }
 
-  submitAnswer(){
-    //TODO: Work on this one to check if the answer submitted is correct
-    this.setState({
-      reciting: false,
-      generating: false,
-      checkingAnswer: true,
-    });
-    //TODO: Compare the answers and display the correct sequence in green padding and incorrect 
-    //cards in red padding
-  }
-
   render(){
     var content;
     if(this.state.reciting){
+      /* Go to the reciting page */
       content=(
         <CardsRecite 
           cards={this.cards} 
           userAnswer={this.state.userAnswer}
-          submitAnswer={this.submitAnswer.bind(this)}
+          generatedCards={this.state.generatedCards}
           addToUserAnswer={this.addToUserAnswer.bind(this)}
           removeFromAnswer={this.removeFromAnswer.bind(this)}
         />
       )
-    }else if(this.state.generating){
+    }else if(this.state.generated){
+      /* Display the genetaed Cards */
       content=(
         <div className="container" style={css.imagesContainer}>
-          {this.cards.map( (image,index) => (
+          {this.state.generatedCards.map( (image,index) => (
             <div key={index}>
               <img className="rounded float-left" 
                 style={css.imgcss} src={this.state.folder+image+".jpg"}
@@ -149,6 +143,7 @@ export default class Cards  extends Component{
         </div>
       )
     }else if(this.state.checkingAnswer){
+      /* Check the answer : TODO: should be dont in the cards recite page */
       content=(
         <div>
           <div>
@@ -158,6 +153,7 @@ export default class Cards  extends Component{
         </div>
       );
     } else{
+      /* Else case: Nothing to do: The entry of the page */
       content=(
         <div>
         </div>

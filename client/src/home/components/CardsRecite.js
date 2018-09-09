@@ -19,41 +19,13 @@ export default class CardsRecite  extends Component{
       });
     }
   };
- 
-  handleSubmit = event => {
-    event.preventDefault();
-    this.setState({answerArray:this.state.answer.trim().split(" ")}, 
-      ()=> this.checkAnswer());
-  }
-  
-  validation(){
-    //The rules for the numbers we are getting
-    for(let a=0; a<this.state.answerArray.length;a++){
-      let invalid=true;
-      for(let b=0;b<this.props.validCards.length;b++){
-        if(this.props.validCards[b] === this.state.answerArray[a]){
-          invalid=false;
-          break;
-        }
-      }
-      if(invalid){
-        console.log("Invalid card encontered:" + this.state.answerArray[a]);
-        return false;
-      }
-    }
-    return true; //When all is good return true.
-  }
 
-  checkAnswer(){
-    if(!this.validation() ){
-      return;
-    }
+  submitAnswer(){
+    /*this.props.userAnswer, this.props.generatedCards */
+    console.log(this.props.userAnswer);
+    console.log(this.props.generatedCards);
   }
  
-  imageClicked(image){
-    console.log(JSON.stringify(image ,null ,2));
-  }
-
   render(){
     return(
       <div className="container-fluid">
@@ -84,7 +56,7 @@ export default class CardsRecite  extends Component{
                 <button 
                   className="btn btn-primary float-right"
                   style={css.submitBtn}
-                  onClick={()=>{this.props.submitAnswer()}}>
+                  onClick={()=>{this.submitAnswer()}}>
                   Submit
                 </button> 
               </div>
