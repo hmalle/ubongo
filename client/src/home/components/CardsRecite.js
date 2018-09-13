@@ -22,8 +22,16 @@ export default class CardsRecite  extends Component{
 
   submitAnswer(){
     /*this.props.userAnswer, this.props.generatedCards */
-    console.log(this.props.userAnswer);
-    console.log(this.props.generatedCards);
+    let score =0;
+    let minLen=(this.props.generatedCards.length<this.props.userAnswer.length)?
+      this.props.generatedCards.length : this.props.userAnswer.length ;
+    for(let index=0; index<minLen; index++){
+      if(this.props.generatedCards[index] === this.props.userAnswer[index])
+        score += 1;
+    }
+    this.props.clearAnswer(); //To clear the previous answer of the user
+    console.log("The score is " + score);
+    this.props.updateScore(score);
   }
  
   render(){

@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 
 export default class Images  extends Component{
+  //For Displaying the Images
   render(){
     return(
       <div className="container" style={css.imagesContainer}>

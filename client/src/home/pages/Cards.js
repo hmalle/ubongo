@@ -50,7 +50,8 @@ export default class Cards  extends Component{
 
   saveSession(){
     //Save the current session of cards in the database
-    if(this.state.cards.length <=2){
+    if(typeof this.state.cards === "undefined" || this.state.cards.length <=2){
+      //Check if the cards is undefined to prevent app collapsing
       alert("Nothing to save");
       return;
     }
@@ -103,6 +104,16 @@ export default class Cards  extends Component{
     });
   }
 
+  clearAnswer(){
+    this.setState({
+      userAnswer:[]
+    });
+  }
+  updateScore(newScore){
+    this.setState({
+      score: newScore
+    });
+  }
   addToUserAnswer(image){
     //Adds the user input from the CardsRecite to the user Answer
     this.setState({
@@ -122,6 +133,8 @@ export default class Cards  extends Component{
         <CardsRecite 
           cards={this.cards} 
           userAnswer={this.state.userAnswer}
+          clearAnswer={this.clearAnswer.bind(this)}
+          updateScore={this.updateScore.bind(this)}
           generatedCards={this.state.generatedCards}
           addToUserAnswer={this.addToUserAnswer.bind(this)}
           removeFromAnswer={this.removeFromAnswer.bind(this)}
