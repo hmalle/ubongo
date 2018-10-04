@@ -50,7 +50,7 @@ export default class Cards  extends Component{
 
   saveSession(){
     //Save the current session of cards in the database
-    if(typeof this.state.cards === "undefined" || this.state.cards.length <=2){
+    if(typeof this.state.generatedCards === "undefined" || this.state.generatedCards.length <=2){
       //Check if the cards is undefined to prevent app collapsing
       alert("Nothing to save");
       return;
@@ -85,6 +85,7 @@ export default class Cards  extends Component{
         field   :"cards",
       },
     }).then((resp)=>{
+      console.log("Restoring generated cards");
       this.setState({ 
         generatedCards: JSON.parse(resp.data.data),
         reciting: false,
