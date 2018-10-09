@@ -33,7 +33,7 @@ export default class CardsRecite  extends Component{
     console.log("The score is " + score);
     this.props.updateScore(score);
   }
- 
+
   render(){
     return(
       <div className="container-fluid">
@@ -72,9 +72,10 @@ export default class CardsRecite  extends Component{
             <div className="card-body" style={css.answerSection}>
               {this.props.userAnswer.map( (image,index) => (
                 <div key={index}>
-                  <img className="rounded float-left" 
-                    style={css.imgcss} src={this.state.folder+image+".jpg"}
-                    onClick={()=>{this.props.removeFromAnswer(image)}}
+                  <img className="rounded float-left ansImage" 
+                    style={css.imgcss} 
+                    src={this.state.folder+image+".jpg"}
+                    onClick={()=>{this.props.removeFromAnswer(index)}}
                     alt="No Content"
                     key={index}
                   />

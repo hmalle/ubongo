@@ -36,7 +36,9 @@ export default class App extends Component {
         return (<Math username={this.props.username}/>);
       case 21:
         return (<Cards username={this.props.username}/>);
-      case 22: return (<Images username={this.props.username}/>); case 23:
+      case 22: 
+        return (<Images username={this.props.username}/>); 
+      case 23:
         return (<Numbers username={this.props.username}/>);
       case 24:
         return (<People username={this.props.username}/>);

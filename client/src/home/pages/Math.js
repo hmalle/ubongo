@@ -14,7 +14,7 @@ export default class math  extends Component{
   }
   
   start(){
-    let ops=Math.floor(Math.random()*5);
+    let ops=Math.floor(Math.random()*5); //choosed a random operation
     let num1, num2, ans, op;
     if(ops===0){
       //This will give us addition

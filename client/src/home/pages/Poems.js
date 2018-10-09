@@ -28,12 +28,12 @@ export default class Poems  extends Component{
       },
     }).then((resp)=>{
       if(resp.status===200){
-        console.log(">>> Successiful");
+        console.log("+++ Successiful");
       }else{
-        console.log(">>> Unsuccessiful");
+        console.log("+++ Unsuccessiful");
       }
     }).catch( (err) =>{
-      console.log(">>> error: "+ err);
+      console.log("+++ error: "+ err);
     });
   }  restoreTraining(){
     alert("restoring previous training");

@@ -65,17 +65,17 @@ export default class Cards  extends Component{
       },
     }).then((resp)=>{
       if(resp.status===200){
-        console.log(">>> Successiful");
+        console.log("+++ Successiful");
       }else{
-        console.log(">>> Unsuccessiful");
+        console.log("+++ Unsuccessiful");
       }
     }).catch( (err) =>{
-      console.log(">>> error: "+ err);
+      console.log("+++ error: "+ err);
     });
   }
 
   restoreSession(){
-    //TODO: This gives a 501 error
+    //TODO: This gives a 501 error  Images retrieved but not displayel
     //Restore the saved session from the database
     axios({
       method:"post",
@@ -92,8 +92,8 @@ export default class Cards  extends Component{
         checkingAnswer: false,
       });
     }).catch((err)=>{
-      console.log(">>> error: "+ err);
       //TODO: Make sure the error isnt spitting user informations
+      console.log("+++ Error in retrieving previous session");
     });
   }
 
@@ -116,14 +116,18 @@ export default class Cards  extends Component{
     });
   }
   addToUserAnswer(image){
-    //Adds the user input from the CardsRecite to the user Answer
+    //Adds the user clicked Image from the CardsRecite to the user Answer
     this.setState({
       userAnswer: this.state.userAnswer.concat(image)
     });
   }
-
-  removeFromAnswer(image){
-    //TODO: Remove the clicked image from the answer
+  removeFromAnswer(index){
+    //Remove the clicked image from the answer
+    let answerArray=JSON.parse(JSON.stringify(this.state.userAnswer));
+    answerArray.splice(index,1); //Remove that one element
+    this.setState({
+      userAnswer:answerArray
+    });
   }
 
   render(){
@@ -148,7 +152,8 @@ export default class Cards  extends Component{
           {this.state.generatedCards.map( (image,index) => (
             <div key={index}>
               <img className="rounded float-left" 
-                style={css.imgcss} src={this.state.folder+image+".jpg"}
+                style={css.imgcss} 
+                src={this.state.folder+image+".jpg"}
                 alt="No Content"
                 key={index}
               />
@@ -215,3 +220,5 @@ const css={
     borderRadius: 8,
   },
 }
+
+//I want to make the images have hover effect but doesnt want to have a hover state for all the image
