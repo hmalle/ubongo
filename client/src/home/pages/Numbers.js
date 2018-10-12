@@ -6,25 +6,41 @@ import navcss from "./pagestyles.js";
 
 export default class Numbers  extends Component{
   state={
-    numbers : [],
+    numbers:[], //Will be a 2D array
     numbersSet: false,
     reciting: false,
   }
 
   //This function will generate 500 random digits
-  generateNewSession(){
-    let randNumArray = [];
-    for(let a=0; a<25; a++){
-      let oneLine = [];
-      for(let b=0; b<20; b++){
-        oneLine.push(Math.floor(Math.random()*10));
+  generateDecimalSession(){
+    let decimalArray=[];
+    for(let a=0;a<25;a++){
+      let tmp=[];
+      for(let b=0;b<25;b++){
+        tmp.push(Math.floor(Math.random()*10));
       }
-      randNumArray.push( oneLine.join(" "));
+      decimalArray.push(tmp)
     }
     this.setState({
-      numbers:randNumArray,
+      numbers: decimalArray,
       numbersSet:true,
-      reciting: false,
+      reciting:false
+    });
+  }
+  //TODO Related to the above array, needs a flag to reduce code redundancy
+  generateBinarySession(){
+    let binaryArray=[];
+    for(let a=0;a<25;a++){
+      let tmp=[]
+      for(let b=0;b<25;b++){
+        tmp.push(Math.floor(Math.random()*2));
+      }
+      binaryArray.push(tmp);
+    }
+    this.setState({
+      numbers: binaryArray,
+      numbersSet:true,
+      reciting:false
     });
   }
 
@@ -53,6 +69,7 @@ export default class Numbers  extends Component{
   }
 
   restoreSession(){
+    //TODO: This function is crashing now due to some unforseen issues
     axios({
       method:"post",
       url:"/api/retrieve/session",
@@ -81,11 +98,18 @@ export default class Numbers  extends Component{
     if(this.state.numbersSet && !this.state.reciting){
       return(
         <div className="container" style={navcss.numberBox}>
-          {this.state.numbers.map( (num,index) => (
+          {this.state.numbers.map((numArr,numArrIndex) => (
             <div 
               style={css.numberRow}
-              key={index}>
-              {num} - Row {++index}
+              key={numArrIndex}>
+              {numArr.map((num,index)=>(
+                <span 
+                  style={css.digits}
+                  key={index}>
+                  {num}
+                </span>
+              ))}
+              - Row {numArrIndex}<br/>
             </div>
           ))}
         </div>
@@ -109,8 +133,12 @@ export default class Numbers  extends Component{
               <a style={navcss.header}>Numbers</a>
             </li>
             <li className="nav-item">
-              <a style={navcss.li_a_css} onClick={()=>{this.generateNewSession()}} >Generate</a>
+              <a style={navcss.li_a_css} onClick={()=>{this.generateDecimalSession()}} >Decimal</a>
             </li>            
+            <li className="nav-item">
+              <a style={navcss.li_a_css} onClick={()=>{this.generateBinarySession()}} >Binary</a>
+            </li>            
+
             <li className="nav-item">
               <a style={navcss.li_a_css} onClick={()=>{this.saveSession()}} >Save</a>
             </li>
@@ -132,9 +160,14 @@ export default class Numbers  extends Component{
 
 const css={
   numberBox:{
-
   },
   numberRow:{
-    fontSize: 16,
+    fontSize: 18,
+    minWidth: "51%", //So we dont get overlapping lines
+    display:"inline-block",
   },
+  digits:{
+    fontSize: 18,
+    padding: 3,
+  }
 }
