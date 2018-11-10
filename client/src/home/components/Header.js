@@ -109,14 +109,14 @@ import React, { Component } from "react"; export default class Header  extends C
                   data-toggle="dropdown" 
                   aria-haspopup="true" 
                   aria-expanded="false">
-                  Puzzles
+                  N-Back
                 </a>
                 <div className="dropdown-menu" style={css.dropdownmenu} aria-labelledby="navbarDropdown3">
                   <a 
                     className="dropdown-item" 
                     style={css.menuitem} 
                     onClick={()=>{this.props.setPageIndex(31)}}>
-                    Puzzles
+                    N-Back
                   </a>
                 </div>
               </li>

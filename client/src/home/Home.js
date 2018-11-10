@@ -8,7 +8,7 @@ import Math from "./pages/Math";
 import Numbers from "./pages/Numbers";
 import People from "./pages/People";
 import Poems from "./pages/Poems";
-import Puzzles from "./pages/Puzzles";
+import Nback from "./pages/Nback";
 import Words from "./pages/Words";
 
 export default class App extends Component {
@@ -47,7 +47,7 @@ export default class App extends Component {
       case 26: 
         return (<Words username={this.props.username}/>);
       case 31:
-        return (<Puzzles username={this.props.username}/>);
+        return (<Nback username={this.props.username}/>);
       default:
         return (<Init username={this.props.username}/>);
     }
