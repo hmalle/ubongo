@@ -7,6 +7,7 @@ export default class puzzles  extends Component{
   state={
     data: [],
     colors: [],
+    interval: 2,
     symbols:"1234567890",
     position:"1234567890",
     sounds:"qwertyuiopasdfghjklzxcvbnm",
@@ -29,6 +30,11 @@ export default class puzzles  extends Component{
     });
   }
 
+  checkSymbol(){ alert("Symbol"); }
+  checkPosition(){ alert("Position"); }
+  checkSound(){ alert("Sound"); }
+  checkColor(){ alert("Color"); }
+
   render(){
     var content
     if(this.state.initiated){
@@ -42,11 +48,17 @@ export default class puzzles  extends Component{
               <h1 style={css.symbols}>{eachData.symbol}</h1>
             </div>
           ))}
+          <div>
+            <span style={css.userKeys} onClick={()=>this.checkSymbol()}> Symbol</span>
+            <span style={css.userKeys} onClick={()=>this.checkPosition()}> Position</span>
+            <span style={css.userKeys} onClick={()=>this.checkSound()}> Sound</span>
+            <span style={css.userKeys} onClick={()=>this.checkColor()}> Color</span>
+          </div>
         </div>
       );
     }else {
       //Nothing 
-      content = <div></div>
+      content = (<div></div>);
     }
 
     return(
@@ -85,7 +97,11 @@ const css={
     height: 200,
   },
   symbols:{
-    fontSize: 200,
+    fontSize: 120,
     color: "blue",
+  },
+  userKeys:{
+    fontSize: 25,
+    color: "#000000",
   },
 }

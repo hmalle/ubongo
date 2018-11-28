@@ -69,7 +69,7 @@ export default class App extends Component {
         </div>
         <div style={css.footerDiv}>
           <div className="footer" style={css.footer}>
-            <p>&copy;Copyright 2018 Hillary Malle </p>
+            <p>&copy;Copyright 2018 Malle</p>
           </div>
 
         </div>
