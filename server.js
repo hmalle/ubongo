@@ -1,50 +1,13 @@
 
-//requirements
-const bodyparser  = require("body-parser");
-const cors        = require("cors");
-const express     = require("express");
-const morgan      = require("morgan");
-const passport    = require("passport");
-const session     = require("express-session");
+const express = require('express')
+const app = express()
+const port = 3000
 
-const PORT = process.env.PORT || 3001 ;
-const app = express();
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+})
 
-//cors to test network error issue
-app.use(cors()); //seems to have fixed the network error issue
-
-//passport 
-app.use(session({secret:"aaipouikllahuyvscvzxlnm.,lad",resave:true, saveUninitialized: true}));
-app.use(passport.initialize());
-app.use(passport.session());
-
-//body parser
-app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({extended:true}));
-app.use(bodyparser.text());
-app.use(bodyparser.json({type:"application/vnd.api+json"}));
-
-//To be able to server static images instead of storing images in the backend
-app.use(express.static("./images/"));
-
-if(process.env.NODE_ENV === 'production'){
-  app.use(express.static("client/build"));
-}
-
-//use morgan for log
-app.use(morgan("dev"));
-
-//database
-const db = require("./models");
-
-//routes
-require("./routes/userRoutes")(app);
-require("./routes/sessionRoutes")(app);
-
-//start the server listening on the port
-db.sequelize.sync({force:false}).then( ()=>{
-  app.listen(PORT, ()=>{
-    console.log("App listening on port " +PORT );
-  });
-});
+app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`)
+})
 
